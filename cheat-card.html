@@ -75,6 +75,9 @@
     padding:10px 13px;margin:10px 0 9px;font-size:14.5px;line-height:1.62}
   .open .l{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:1.2px;color:var(--blue);
     background:#dfe9ff;border-radius:5px;padding:2px 7px;margin-right:8px;vertical-align:1.5px}
+  .shortv{font-size:13px;line-height:1.5;color:#42506a;background:#f7f9fc;border:1px dashed #d4ddec;border-radius:9px;padding:8px 11px;margin:0 0 9px}
+  .shortv .l{display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.2px;color:#7585a0;margin-right:7px;vertical-align:1px}
+  .shortv b{color:#2c3a52}
   .hl{margin:2px 0 0}
   .hl .l{font-size:9.5px;font-weight:800;letter-spacing:1.4px;color:var(--grn);display:block;margin-bottom:4px}
   .hl ul{margin:0;padding-left:17px}
@@ -203,7 +206,8 @@
 
   <div class="card star">
     <div class="qrow"><div class="badge">5</div><div class="q">Tell me about a 0→1 you built. <span class="star-lbl">★ lead with this</span></div></div>
-    <div class="open"><span class="l">TALK TRACK</span>Amazon's robot-delivery-station launch-execution program. I built it from zero. No playbook. Empty building and a robot platform to a full operation. I coordinated the construction, the process, the BOM, the S-DEN install, the timelines, testing, then the ramp. The first ones were rough. We were learning what broke at scale in real time. So I studied the standard conveyor-station launch, worked backwards, and built the playbook to standardize the next ones off the real failures. Cut ramp defects <b>seventeen percent</b>. And it became the standard the other launches used.</div>
+    <div class="open"><span class="l">TALK TRACK</span>Amazon's robot-delivery-station launch-execution program. I built it from zero. No playbook. Empty building and a robot platform to a full operation. I coordinated the construction, the process, the bill of materials, the secure delivery network (the S-DEN) install, the timelines, testing, then the ramp. The first ones were rough. We were learning what broke at scale in real time. So I studied the standard conveyor-station launch, worked backwards, and built the playbook to standardize the next ones off the real failures. Cut ramp defects <b>seventeen percent</b>. And it became the standard the other launches used.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>Amazon's robot-delivery-station program, built from zero. Empty building to full robot ops. The first ones broke, so I built the playbook from the failures. Cut ramp defects <b>17%</b>, and it became the standard.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li><b>Empty building to a full robot operation</b>, no playbook.</li>
       <li>First launches were rough; learned what broke at scale.</li>
@@ -263,7 +267,8 @@
 
   <div class="card">
     <div class="qrow"><div class="badge">10</div><div class="q">Tell me about a failure.</div></div>
-    <div class="open"><span class="l">TALK TRACK</span>Early ARDS. I trusted the plan over what was actually breaking on the floor, and we hit ramp defects I didn't see coming. Here's why it surprised me. The old Mech-Lite stations could hit timelines by adding labor or paralleling builds. With the tech, the timelines had to be exact. The network couldn't come up until the S-DEN was installed, securing and externalizing the internal network. The autonomous robots couldn't run until the site was mapped. I'd trusted the model over the operators. So now I start every launch with the people doing the work. I map the real dependencies and limits, and build in buffers where the schedule compresses. That one stuck with me.</div>
+    <div class="open"><span class="l">TALK TRACK</span>Early ARDS. I trusted the plan over what was actually breaking on the floor, and we hit ramp defects I didn't see coming. Here's why it surprised me. The old Mech-Lite stations, the conventional ones, could hit timelines by adding labor or paralleling builds. With the tech, the timelines had to be exact. The network couldn't come up until the S-DEN, our secure delivery externalized network, was installed. The autonomous robots couldn't run until the site was mapped. I'd trusted the model over the operators. So now I start every launch with the people doing the work. I map the real dependencies and limits, and build in buffers where the schedule compresses. That one stuck with me.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>Early ARDS, I trusted the plan over what was breaking on the floor and hit defects I didn't see. The robotics timelines had to be exact, and I'd trusted the model over the operators. Now I start every launch with the people doing the work and build in buffers. That one stuck.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Trusted the model over the operators; hit defects I didn't see coming.</li>
       <li>Fix: build the playbook <b>from the floor up</b>.</li>
@@ -344,7 +349,7 @@
 </div>
 
 <script>
-  var K='interview-cheat-card-v5';
+  var K='interview-cheat-card-v6';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
