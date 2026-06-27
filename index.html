@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoftBank Robotics — Interview Prep (Mon Jun 29)</title>
+<style>
+  :root{
+    --ink:#14181f; --muted:#5b6570; --line:#e1e6ee; --paper:#ffffff;
+    --slate:#1f2a44; --accent:#2b59c3; --chip:#eef3ff;
+    --ok:#0f7a3d; --okbg:#eafaf0; --warn:#9a3412; --warnbg:#fff4ed;
+    --gold:#b9892b; --goldbg:#fbf6ea;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#f5f7fb;color:var(--ink);
+    font:13px/1.46 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .topbar{position:sticky;top:0;z-index:10}
+  .toolbar{display:flex;align-items:center;gap:10px;
+    background:var(--slate);color:#fff;padding:8px 14px;}
+  .tabbar{display:flex;gap:4px;background:#e9edf5;border-bottom:1px solid var(--line);padding:6px 12px 0;flex-wrap:wrap}
+  .tabbar .tab{font:600 12.5px/1 inherit;color:var(--muted);background:transparent;border:0;
+    border-bottom:3px solid transparent;padding:9px 15px;cursor:pointer;border-radius:6px 6px 0 0}
+  .tabbar .tab.active{color:var(--slate);background:var(--paper);border-bottom-color:var(--accent)}
+  .panel{display:none}.panel.active{display:block}
+  .toolbar b{font-size:13px;font-weight:700;letter-spacing:.2px}
+  .toolbar .sp{flex:1}
+  .toolbar button{font:600 12px/1 inherit;color:var(--slate);background:#ffd24a;border:0;
+    border-radius:5px;padding:7px 11px;cursor:pointer}
+  .toolbar button.ghost{background:transparent;color:#cdd8ee;border:1px solid #46506a}
+  .toolbar #save-status{font-size:11px;color:#c2cee6}
+  .wrap{max-width:940px;margin:14px auto;padding:0 14px 70px}
+  #doc{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:22px 26px;box-shadow:0 1px 3px rgba(20,40,80,.06);outline:none}
+  #doc:focus{box-shadow:0 0 0 2px #c2d4ff}
+  h1{font-size:19px;color:var(--slate);margin:0 0 2px}
+  .sub{color:var(--muted);font-size:12px;margin:0 0 12px}
+  h2{font-size:13.5px;color:#fff;background:var(--accent);display:inline-block;
+    padding:3px 10px;border-radius:5px;margin:22px 0 9px}
+  h3{font-size:12.5px;color:var(--slate);margin:14px 0 4px;text-transform:uppercase;letter-spacing:.4px}
+  ul{margin:5px 0 5px;padding-left:18px}
+  li{margin:3px 0}
+  p{margin:5px 0}
+  b,strong{color:var(--slate)}
+  a{color:var(--accent)}
+  .chip{display:inline-block;background:var(--chip);color:var(--slate);border-radius:20px;
+    padding:2px 9px;font-size:11px;font-weight:600;margin:2px 4px 2px 0}
+  .lead{background:#f6f9ff;border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:6px;padding:10px 13px;margin:10px 0;font-size:12.5px}
+  .star{background:var(--goldbg);border:1px solid #ecdcae;border-left:4px solid var(--gold);
+    border-radius:6px;padding:10px 13px;margin:10px 0}
+  .star h3{color:var(--gold);margin-top:0}
+  .warn{background:var(--warnbg);border-left:4px solid #ea7a3c;border-radius:6px;padding:9px 13px;margin:9px 0}
+  .warn b{color:var(--warn)}
+  .ok{color:var(--ok);font-weight:700}
+  .qa{margin:6px 0}.qa .q{font-weight:700;color:var(--slate)}.qa .a{margin:2px 0 9px}
+  .say{background:#fbfcfe;border:1px solid var(--line);border-left:3px solid var(--slate);
+    border-radius:6px;padding:8px 12px;margin:3px 0 9px;font-size:13px;line-height:1.6}
+  .src{color:var(--muted);font-size:11px;font-style:italic}
+  hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+  .person{border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin:7px 0;background:#fcfdff}
+  .person .nm{font-weight:700;color:var(--slate)}
+  .person .ttl{color:var(--muted);font-size:11.5px}
+  .person .ang{margin-top:3px;font-size:12px}
+  .flag{display:inline-block;background:#fde8c8;color:#8a5a12;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700;margin-left:5px;vertical-align:1px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .secs{display:inline-block;background:var(--slate);color:#fff;border-radius:20px;padding:1px 8px;
+    font-size:10px;font-weight:700;vertical-align:2px;margin-left:6px}
+  @media (max-width:640px){.grid2{grid-template-columns:1fr}}
+  @media print{
+    body{background:#fff}.topbar,.toolbar,.tabbar{display:none}.wrap{margin:0;max-width:none;padding:0}
+    #doc,#researchdoc{border:0;box-shadow:none;border-radius:0;padding:0}
+    .panel:not(.active){display:none}
+    h2{color:#1f2a44;background:#eaf0fb}
+    .grid2{display:block}
+    @page{margin:12mm}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+<div class="toolbar">
+  <b>SoftBank Robotics — Interview Prep</b>
+  <span id="save-status">editable · auto-saves in this browser</span>
+  <span class="sp"></span>
+  <button onclick="window.print()">Print / Save PDF</button>
+  <button class="ghost" onclick="resetDoc()">Reset</button>
+</div>
+<div class="tabbar">
+  <button class="tab active" data-tab="prep">★ Prep &amp; talking points</button>
+  <button class="tab" data-tab="research">Research &amp; links</button>
+</div>
+</div>
+
+<div class="wrap">
+<div id="prep" class="panel active">
+<div id="doc" contenteditable="true" spellcheck="false">
+
+  <h1>SoftBank Robotics America — Fleet Systems Technical Lead</h1>
+  <p class="sub">Interview: <b>Mon Jun 29, 10:00 AM CT</b> · Remote (Dallas) · Fleet Systems Technical Lead · <i>this page is editable, your edits auto-save</i></p>
+
+  <div class="lead"><b>The frame.</b> This is a <b>new team moving fast</b>. A friend already on the team says it's really conversational. Their path went recruiter Monday, then the VP, two more Wednesday, offer the same day. So Round 1 is about <b>fit, story, and genuine excitement</b>, not a technical grilling. You have a real edge here: robotics plus last-mile is your actual career, not a stretch. <b>Be warm, be specific, let the enthusiasm show.</b> You're getting coached Sunday; we run the mock Sunday too.</div>
+
+  <div class="warn"><b>One anchor line</b> (their President's words): <b>"The challenge is not the technology, but operationalizing it to produce consistent measurable outcomes."</b> That is your whole career in one sentence. Mirror it.</div>
+
+  <h2>★ Career highlights — your raw material</h2>
+  <p class="src">Pull from these for any question. Lead with the robotics one. Every line has the number on it.</p>
+  <div class="star">
+  <ul>
+    <li><b>Built Amazon's robot-delivery-station launch program 0→1 (ARDS).</b> Took empty buildings and a delivery-robot platform to full operations; cut ramp defects <b>17%</b>. <span class="chip">your keystone — robotics + last-mile in one story</span></li>
+    <li><b>Built Amazon's launch planning for new markets 0→1.</b> The operating playbook and planning model for opening delivery stations with no prior footprint; cut launch lead-time <b>15%</b>; it became the global standard.</li>
+    <li><b>Director, 3P Last-Mile Delivery Technology at Walmart.</b> 6 PMs and engineers, 20+ initiatives. Shipped an <b>AI fleet-ops assistant that cut manual monitoring 75%</b> across <b>100,000+ deliveries a day</b>.</li>
+    <li><b>Carrier integrations across 10 platforms:</b> onboarding from <b>quarters to weeks</b> at a <b>99% on-time launch rate</b>.</li>
+    <li><b>Intelligent load sequencing</b> across <b>3,000+ stores</b>; built a secure-handoff fix after finding a returns-fraud hole.</li>
+    <li><b>Sr. Manager, Dedicated Fleet:</b> on-time <b>+15%</b>, cancellations <b>−35%</b>, batch size <b>+50%</b>, removed <b>300+ manual hours a quarter</b>.</li>
+    <li><b>BNSF Railway:</b> led a <b>673-person</b> terminal team; operating cost <b>−64%</b>; damage claims <b>−65%</b>.</li>
+    <li><b>I build, not just manage.</b> I ship my own tooling: Fleet Track (a DSP-dispatch product), The Flow Architect, and 100+ open-source tools at github.com/HR-AR. Equal parts operator and builder.</li>
+  </ul>
+  </div>
+
+  <h2>Why SoftBank / why now</h2>
+  <h3>The 90-second version</h3>
+  <div class="say">I've spent twelve years in last-mile, a lot of it building from nothing. I ran rail terminals, then went to Amazon and built two things from scratch, including the launch-execution program for their autonomous robot delivery stations. Taking an empty building and standing up a running robot operation was the most fun I've had in my career. Then at Walmart I went deep on the technology side, running third-party fleet integrations and shipping the AI that runs a hundred thousand deliveries a day. SoftBank is the first place I've seen where those two threads, robotics and last-mile operations, are literally the same job. You're not selling a robot, you're making it deliver reliably at scale, and that's the problem I've been chipping at for twelve years. Getting to do that for a fleet that's actually flying is the part I'm genuinely excited about.</div>
+  <h3>The 30-second version</h3>
+  <div class="say">Twelve years in last-mile, including building Amazon's robot-delivery-station launch program from scratch. At Walmart I run third-party fleet technology and ship the AI behind a hundred thousand deliveries a day. SoftBank is where robotics and last-mile become one job, making robots deliver reliably at scale. That's the problem I've spent my career on, and I'd love to do it here.</div>
+
+  <h2>The role, decoded</h2>
+  <p class="src">The public JD wasn't reachable, so this is reasoned from their "Fleet" function plus a friend's framing. Treat it as your read, not gospel. Each piece maps to a proof point.</p>
+  <ul>
+    <li><b>Stand up fleet systems for a brand-new team</b> → "I've built two functions from zero at Amazon. Standing things up from nothing is the part I'm best at."</li>
+    <li><b>Robot uptime / reliability at scale</b> → "I owned fleet performance and cost. The framework and exception alerting I built lifted on-time 15% and cut cancellations 35%."</li>
+    <li><b>Launch execution / deployment playbooks</b> → "ARDS: empty building to full robot-station ops, ramp defects down 17%, and it became the launch standard."</li>
+    <li><b>Network strategy / growth plan</b> → "Carrier integrations across 10 platforms, onboarding from quarters to weeks. Growth comes from a repeatable playbook, not custom launches."</li>
+    <li><b>Technical + programmatic build</b> → "I ship my own tooling. The AI fleet-ops assistant I built cut manual monitoring 75%. Engineers take me seriously because I do the work."</li>
+  </ul>
+
+  <h2>Round 1 (Monday) — likely questions, your answers</h2>
+  <p class="src">Conversational. Don't recite. These are the shape of the answer, in your voice. Land the bolded number.</p>
+
+  <div class="qa"><div class="q">Walk me through your background.</div>
+  <div class="say">I'm a last-mile operator and a builder. I started in rail at BNSF running terminals and a <b>673-person</b> team. Then Amazon, where I built two programs from scratch, including the launch-execution program for their autonomous robot delivery stations. Now I'm a director at Walmart over third-party delivery technology, running fleet integrations and the AI tooling behind <b>100,000+</b> deliveries a day. The thread through all of it is taking something new and making it run reliably at scale.</div></div>
+
+  <div class="qa"><div class="q">Why SoftBank Robotics, why now?</div>
+  <div class="say">Two threads in my career, robotics and last-mile operations, have always been separate jobs. Here they're the same job. You're taking robots into the real world and making them deliver, which is exactly what I did with Amazon's robot stations and what I do with fleets at Walmart now. The remote setup also fits where I am in my life right now, and what I've heard about the team and the pace pulled me in.</div></div>
+
+  <div class="qa"><div class="q">What do you know about what we're building?</div>
+  <div class="say">You've repositioned as a Physical AI Integrator. The Matternet partnership is the clearest signal, you're taking a certified drone platform and owning the ground systems and the operations so it actually delivers, starting in healthcare where reliability is non-negotiable. Brady's line stuck with me, the challenge isn't the technology, it's operationalizing it for consistent, measurable outcomes. That's the work I do.</div></div>
+
+  <div class="qa"><div class="q">Tell me about something you built from zero.</div>
+  <div class="say">At Amazon I built the launch-execution program for their autonomous robot delivery stations. There was no playbook. I'd take an empty building and a robot platform and stand up the whole operation, staffing, process, the ramp. The first launches were rough, we were learning what broke at scale in real time. I built the playbook out of those failures, we cut ramp defects <b>17%</b>, and it became the standard the other launches used.</div></div>
+
+  <div class="qa"><div class="q">How do you think about fleet uptime and reliability at scale?</div>
+  <div class="say">My rule is the team should know a unit is failing before the customer does. At Walmart that meant exception alerting on top of a performance framework, and that's what lifted on-time <b>15%</b> and cut cancellations <b>35%</b>. For a robot or drone fleet I'd watch the same shape, uptime, mean-time-between-failures, cost-per-delivery, and wire the fleet-management layer so a degraded unit pulls itself out of rotation instead of dropping a delivery. The vehicle changes; the reliability and unit-economics discipline doesn't.</div></div>
+
+  <div class="qa"><div class="q">Biggest scaling challenge you've solved?</div>
+  <div class="say">We were onboarding delivery carriers in quarters. I rebuilt the process and got it to weeks at a <b>99%</b> on-time launch rate across ten platforms. The unlock was standardizing the playbook so each new launch stopped being a custom project.</div></div>
+
+  <div class="qa"><div class="q">How do you work across engineering, operations, and partners?</div>
+  <div class="say">What keeps it from falling apart is a single source of truth and clear ownership, plus I do enough of the technical work myself, SQL, the AI tooling, that engineers treat me as a peer instead of a layer to route around. At Walmart I'm the connector across engineering, store ops, finance, and the carrier partners, and the reason it holds is that I'm in the actual data with them, not just running the meeting.</div></div>
+
+  <div class="qa"><div class="q">Tell me about a failure, or something that surprised you.</div>
+  <div class="say">Early ARDS launches, I over-indexed on the plan and under-indexed on what actually broke on the floor. We hit ramp defects I didn't see coming because I trusted the model over the operators. The fix was to build the playbook from the floor up instead of the top down. It's why I now start every launch by talking to the people doing the work.</div></div>
+
+  <div class="qa"><div class="q">Remote, Dallas, and start timing?</div>
+  <div class="say">Remote works well for me, I run distributed teams now and I build a lot of async tooling. On start timing I'd want to land on a date that's fair to the team and to me, and I've already thought through a couple of options that could work.</div></div>
+
+  <div class="qa"><div class="q">What are you looking for in your next role?</div>
+  <div class="say">A place where standing things up from zero is the job, not a side project, and where I'm close enough to both the ops and the code to actually move a reliability number. This role is exactly that. The building-from-nothing is the part I want more of, and here it's the whole point.</div></div>
+
+  <h2>Hard follow-ups — be ready</h2>
+  <div class="warn"><b>⚑ PREP THIS FIRST — your one real exposure.</b> Everything here rests on "robotics is my actual career, not a stretch." So have a <b>plain 20-second description of the ARDS robots ready</b>: what the robot was (form factor, how autonomous, sidewalk vs. road), and what the station did. If you can't describe the robot in two sentences when asked, the frame wobbles. <b>Write your two sentences here before Monday:</b> <i>[ ____ ]</i>. The pivot if pushed: "the breakage was never the robot's autonomy, it was the human-robot handoff and staging at ramp, which is exactly the integrator problem here."</div>
+  <div class="qa"><div class="q">Drones are different from trucks and ground fleets. What do you NOT know about aviation ops?</div>
+  <div class="say">I haven't run an FAA-regulated air operation, so I'd be learning the BVLOS approvals and the airspace side fast. What transfers cleanly is the reliability and unit-economics layer, the part that's the same whether the vehicle rolls or flies. I'd rather be honest about that than pretend I've flown drones.</div></div>
+  <div class="qa"><div class="q">You run 100K deliveries a day. We're pre-scale. Won't you be over-leveled or bored?</div>
+  <div class="say">The 0→1 is the part I actually want back. The scale is there in my current role, but the building-from-nothing part is what I want more of. I'd rather own the early, messy version than maintain a mature one.</div></div>
+  <div class="qa"><div class="q">Where do you land on build versus integrate?</div>
+  <div class="say">The discipline in an integrator model is resisting the urge to rebuild the platform. Your advantage is the ops and the playbook around someone else's robot. I've lived that, my Walmart edge was never owning the carrier tech, it was making ten carriers' platforms perform to one standard. And you're clearly running that motion across more than drones, Matternet and the Direct Supply senior-living deal look like two instances of the same playbook.</div></div>
+  <div class="qa"><div class="q">What would your first 90 days actually produce? (one breath)</div>
+  <div class="say">Learn the fleet and the Matternet ops, find out which reliability metrics exist and which don't, stand up the uptime view and exception alerting, and run one deployment against a written playbook with a measurable uptime or cost-per-delivery number to show for it.</div></div>
+
+  <h2>Company brief — know this walking in</h2>
+  <ul>
+    <li><b>Physical AI Integrator.</b> They take robotics platforms and make them work reliably in the real world, "proven technology, processes, people and programs that deliver outcomes at scale." They don't have to invent the robot; they make it perform.</li>
+    <li><b>The Matternet partnership (Apr 16, 2026)</b> is the headline. Matternet builds the M2 drone and software (one of the first drone platforms to clear the FAA certification bar; works with UPS; live with the London NHS). <b>SoftBank owns the ground systems and end-to-end operations.</b> Starts in <b>healthcare and commercial</b> delivery. <span class="src">If asked where you read this, say "the partnership release plus some digging," don't recite it like an insider, and don't volunteer the funding/NHS detail unless it comes up.</span></li>
+    <li><b>Legacy + portfolio:</b> Pepper and NAO ("character" robots) and Whiz (cleaning, ~20K units), plus a current lineup of service and <b>multi-tray delivery robots</b> (Scrubber 50 Pro, Vacuum 40, Phantas, Omnie) and outdoor automation. <b>So "fleet" likely spans ground delivery robots and Matternet drones, not just drones.</b> The last-mile push is the new frontier, and this role is on it.</li>
+    <li><b>The role's mission, in their language:</b> "build the operational backbone of this new autonomous logistics layer." That's a fleet-ops + 0→1 job, which is you.</li>
+    <li><b>Parent strategy:</b> SoftBank Group is going big on "Physical AI" (Masa Son), including the move to acquire ABB's robotics arm. SBRA is the U.S. tip of that.</li>
+    <li><b>Other integrator deals:</b> Direct Supply for senior-living. The model is multi-platform, not one product.</li>
+  </ul>
+
+  <h2>People — who's who at SBRA</h2>
+  <p class="src"><span class="flag">LIKELY</span> = highest chance you meet them, based on where a Fleet role reports. Use the angle line to tailor.</p>
+
+  <div class="person"><span class="nm">Naoki Mikoshiba</span> <span class="flag">LIKELY</span><div class="ttl">SVP, Corporate Management &amp; Operations — explicitly owns fleet operations</div>
+  <div class="ang">Engineer-operator (Mechanical Eng, Tohoku; ex-Vodafone), at SBRA since 2016. <b>This role most likely rolls up through him.</b> <b>Angle:</b> be precise and metric-driven, talk uptime, supplier management, disciplined scaling.</div></div>
+
+  <div class="person"><span class="nm">Jordan Sun</span> <span class="flag">LIKELY</span><div class="ttl">VP, Product, Design &amp; Engineering — the "VP on the tech side"</div>
+  <div class="ang">Ex-Chief Innovation Officer for San José (grew a team 3→40), Afghanistan special-ops product lead, In-Q-Tel, US diplomat, Yale MBA. A mission-driven 0→1 builder. <b>Angle:</b> your strongest values match. Lean into building functions from scratch in messy real-world conditions, and that you ship your own tools.</div></div>
+
+  <div class="person"><span class="nm">Katya Akudovich</span> <span class="flag">LIKELY</span><div class="ttl">VP, New Business &amp; Strategic Growth (New Ventures)</div>
+  <div class="ang">Owns partnerships and growth (PandaDoc, ex-CEO LiveJournal, Google Play, Box). The "network strategy / growth plan" for this role likely sits here. <b>Angle:</b> partner and carrier integration; how operational reliability unlocks commercial growth.</div></div>
+
+  <div class="person"><span class="nm">Brady Watkins</span><div class="ttl">President &amp; General Manager</div>
+  <div class="ang">Commercialization leader, not an engineer (10+ yrs Ubisoft, Michigan Ross MBA; scaled Whiz to ~20K units). His "operationalizing it" quote is your anchor. <b>Angle:</b> lead with business outcomes, scale, and consistency.</div></div>
+
+  <div class="grid2">
+  <div class="person"><span class="nm">Karen Wood-Maris</span><div class="ttl">VP, Revenue Ops &amp; Customer Experience</div>
+  <div class="ang">Ex-Accenture ($100M portfolio) + IBM. <b>Angle:</b> frame fleet reliability as customer experience.</div></div>
+  <div class="person"><span class="nm">Dianna Wilusz</span><div class="ttl">VP, People Experience &amp; Operations</div>
+  <div class="ang">30+ yrs HR; theme is "automation without alienation." <b>Angle (values round):</b> leading people through change, augmenting humans not replacing them.</div></div>
+  </div>
+  <div class="grid2">
+  <div class="person"><span class="nm">Andreas Raptopoulos</span><div class="ttl">Co-founder &amp; CEO, Matternet (the partner)</div>
+  <div class="ang">Aero engineer + designer; built Matternet to "leapfrog road infrastructure." <b>Angle:</b> reference his "new layer of infrastructure" thesis to show you see the whole board.</div></div>
+  <div class="person"><span class="nm">Your recruiter</span><div class="ttl">Talent Acquisition (Greater Boston) — your first screen</div>
+  <div class="ang">Conversational. Warm, concise, let excitement show.</div></div>
+  </div>
+
+  <h2>What to be aware of entering robotics + last-mile</h2>
+  <p class="src">Shows informed enthusiasm, not skepticism. Don't volunteer all of it; have it ready.</p>
+  <ul>
+    <li><b>Hardware reliability and unit economics</b> are the real battle, uptime, mean-time-to-repair, cost-per-delivery. That's the integrator's job, and it's my CPD and fleet-ops background.</li>
+    <li><b>Regulation:</b> drones live under the FAA, BVLOS and Type/Production cert. Matternet's certs are a moat, but airspace approvals gate how fast you scale.</li>
+    <li><b>Demo-to-scale gap:</b> a working demo isn't a reliable network. That gap is exactly where Brady's "operationalizing it" line lives, and where I add value.</li>
+    <li><b>Integrator model:</b> the advantage is programs, processes, and people across platforms, not owning the robot IP. The value is making someone else's robot perform predictably at scale.</li>
+  </ul>
+
+  <h2>Watch / read before Monday</h2>
+  <ul>
+    <li><a href="https://www.prnewswire.com/news-releases/softbank-robotics-america-announces-strategic-partnership-with-matternet-to-power-the-next-era-of-last-mile-delivery-302743832.html">Matternet partnership release</a> — the source of Brady's anchor quote and the integrator framing. <b>Read this first.</b></li>
+    <li><a href="https://us.softbankrobotics.com/about">SBRA About / team page</a> — names, titles, how they describe themselves.</li>
+    <li><a href="https://www.youtube.com/watch?v=bGLBkTBzrKw">Matternet: healthcare drone delivery network (YouTube)</a> — see what the fleet you'd run actually does.</li>
+    <li><a href="https://www.youtube.com/watch?v=2Mf_NlmRGQo">SoftBank Robotics Group corporate film (YouTube)</a> — the parent's tone and "Physical AI" story.</li>
+    <li><a href="https://www.youtube.com/@softbankroboticsamerica1156">SBRA YouTube channel</a> — product demos, recent posts.</li>
+    <li><a href="https://www.therobotreport.com/brady-watkins-appointed-as-president-of-softbank-robotics-america/">Brady Watkins profile (Robot Report)</a> — your would-be GM's background.</li>
+    <li><a href="https://us.softbankrobotics.com/press/jordan-sun-product-head">Jordan Sun appointment</a> + <a href="https://www.robobusiness.com/speaker/jordan-sun/">RoboBusiness bio</a> — the likely tech-side VP.</li>
+    <li><a href="https://www.glassdoor.com/Interview/SoftBank-Robotics-Interview-Questions-E625715.htm">Glassdoor interviews</a> — calibrate the style (conversational, ~3/5).</li>
+    <li><a href="https://www.linkedin.com/company/softbankrobotics">SBRA LinkedIn</a> — skim recent posts for anything new to mention.</li>
+  </ul>
+
+  <h2>Later rounds — prep ahead</h2>
+  <h3>Round 2 — the VP / would-be boss <span class="secs">deeper</span></h3>
+  <p>Expect role depth: how you'd actually stand up Fleet Systems, network strategy and growth, the technical and programmatic build. Bring a <b>30/60/90</b>.</p>
+  <ul>
+    <li><b>First 30:</b> learn the fleet and the Matternet ops cold; find out which reliability metrics exist and which don't; meet the team and the partners; map the current launch/deployment process.</li>
+    <li><b>60:</b> stand up the uptime / reliability view and exception alerting; draft the deployment playbook v1; pick the first reliability or cost metric to move.</li>
+    <li><b>90:</b> run a deployment against the playbook; show a measurable uptime or cost-per-delivery improvement; put a team hiring/scaling plan on the table.</li>
+  </ul>
+  <h3>Rounds 3–4 — cross-functional + values</h3>
+  <ul>
+    <li><b>Partner management:</b> you'd work alongside Matternet (and others). Talk about managing carrier/vendor partners to a shared SLA, the way you do at Walmart.</li>
+    <li><b>Values:</b> "automation without alienation" is a real theme here (Wilusz). Frame robotics as giving people superpowers, augmenting work, not replacing it.</li>
+    <li><b>STAR bank ready:</b> a conflict you resolved, a decision you reversed, a time you influenced without authority, a metric you owned end to end.</li>
+  </ul>
+
+  <h2>Questions to ask them</h2>
+  <ul>
+    <li>What does success look like for this role in the first 6 to 12 months?</li>
+    <li>How do you measure fleet reliability today, and where are the biggest gaps?</li>
+    <li>The Matternet partnership is the headline. How central is drone delivery to this role versus ground robots or other platforms?</li>
+    <li>This is a new team. How much of the playbook exists already versus what I'd be building from scratch?</li>
+    <li>Where does this role sit, and who would I work with most across product, operations, and the partners?</li>
+    <li>How do you think about the build-versus-integrate line? What do you want to own versus rely on the platform partner for?</li>
+    <li><i>(For the VP)</i> What's the 12-month commercial milestone you're driving toward, and what has to be true operationally to hit it?</li>
+  </ul>
+
+  <h2>Process &amp; logistics</h2>
+  <ul>
+    <li><b>Style:</b> conversational, ~3/5 difficulty. For this new team it moves fast (a friend's path: recruiter → VP → two more → offer same day).</li>
+    <li><b>Quirk:</b> they send bare <code>.ics</code> calendar invites with little context. Don't read into a sparse invite.</li>
+  </ul>
+  <div class="warn"><b>In the room, keep Walmart specifics generalized.</b> Use your real stories, but don't share confidential figures, contracts, or system internals. "Third-party fleet," "a hundred thousand deliveries a day," "carrier platforms" is the right altitude.</div>
+
+  <h2>Mock interview — Sunday (with Jeffrey)</h2>
+  <p>You're getting coached on story and comp separately; the live mock pressure-tests delivery. We'll run this question bank, you answer out loud, I'll push on anything thin:</p>
+  <ul>
+    <li>Walk me through your background. (90 sec)</li>
+    <li>Why SoftBank, why now? Why leave your current role?</li>
+    <li>What do you know about what we're building?</li>
+    <li>Tell me about a 0→1 you built. (ARDS)</li>
+    <li>How would you think about robot fleet uptime in your first 90 days?</li>
+    <li>A failure, and what you changed because of it.</li>
+    <li>How do you work with engineers and partners?</li>
+    <li>Two questions you'd ask us.</li>
+  </ul>
+  <p class="src">Goal for the mock: tighten each answer to under 60 seconds, land the number, and sound like you, not a script.</p>
+
+  <h2>The 30-second version (if you only remember one thing)</h2>
+  <div class="say">I build last-mile operations from zero, including Amazon's robot-delivery-station launch program. At Walmart I run third-party fleet technology and the AI behind a hundred thousand deliveries a day. SoftBank is the one place robotics and last-mile are the same job, making robots deliver reliably at scale. That's the problem I've spent my career on, and I'm genuinely excited to do it here.</div>
+
+  <hr>
+  <p class="src"><b>Sources:</b> an internal referral, SBRA + Matternet press (Apr 2026), SBRA leadership pages, Glassdoor, and your resume. Full citations and clickable links in the <b>Research &amp; links</b> tab above. Compiled Jun 2026.</p>
+
+</div><!-- /#doc -->
+</div><!-- /#prep -->
+
+<div id="research" class="panel">
+<div id="researchdoc">
+
+  <h1>Research &amp; Links — SoftBank Robotics America</h1>
+  <p class="sub">The backing for the prep tab. Everything here is clickable, built for review on the go. <span class="src"><b>[confirmed]</b> = sourced below · <b>[inference]</b> = reasoned, don't assert as fact.</span></p>
+
+  <div class="warn"><b>Anchor quote</b> (Brady Watkins, President &amp; GM): <b>"The challenge is not the technology, but operationalizing it to produce consistent measurable outcomes."</b> Your career in one line. Mirror it.</div>
+
+  <h2>What SoftBank Robotics America is now</h2>
+  <ul>
+    <li><b>Physical AI Integrator.</b> They take robotics platforms and make them work reliably in the real world: "proven technology, processes, people and programs that deliver outcomes at scale." They don't invent the robot, they make it perform. <span class="src">[confirmed]</span></li>
+    <li><b>The Matternet partnership (Apr 16, 2026)</b> is the headline. Matternet builds the M2 drone + software (one of the first drone platforms to clear the FAA certification bar; works with UPS; live with the London NHS). <b>SBRA owns the ground systems + end-to-end operations.</b> Starts in healthcare + commercial. <span class="src">[confirmed]</span></li>
+    <li><b>Integrator thesis (their words):</b> "successfully integrate and support platforms like Matternet into real-world delivery environments that drive predictable performance at scale." <span class="src">[confirmed]</span></li>
+    <li><b>Portfolio:</b> legacy Pepper/NAO + Whiz (~20K units); current service + <b>multi-tray ground delivery robots</b> (Scrubber 50 Pro, Vacuum 40, Phantas, Omnie) + outdoor automation. So "fleet" likely spans ground robots AND drones. Other integrator deal: Direct Supply (senior living). <span class="src">[confirmed, NotebookLM]</span></li>
+    <li><b>Parent:</b> SoftBank Group's "Physical AI" push (Masa Son), including the move to acquire ABB's robotics arm. <span class="src">[confirmed]</span></li>
+  </ul>
+  <p class="src"><b>Exec quotes (Matternet release):</b> Watkins, "the challenge is not the technology, but operationalizing it…" · Katya Akudovich, "By combining Matternet's technology with our commercialization capability, we bring autonomous drone delivery into day-to-day operations." · Andreas Raptopoulos (Matternet), "Our partnership will accelerate deployment and help build autonomous delivery infrastructure."</p>
+
+  <h2>The role, decoded</h2>
+  <p><span class="src">[inference, grounded]</span> The public JD wasn't reachable. From SBRA's Fleet function + a friend's framing: stand up and run the <b>systems and operations behind a deployed robot/drone fleet</b>, uptime, deployment playbooks, launch execution, network growth, and build the technical + programmatic scaffolding for a new team. Likely reports through <b>Mikoshiba</b> (owns fleet ops) and/or <b>Sun</b> (Product/Eng), with <b>Akudovich</b> on growth.</p>
+
+  <h2>Leadership — profiles &amp; LinkedIn</h2>
+  <p class="src"><span class="flag">LIKELY</span> = highest chance you meet them.</p>
+
+  <div class="person"><span class="nm">Naoki Mikoshiba</span> <span class="flag">LIKELY</span><div class="ttl">SVP, Corporate Management &amp; Operations — explicitly owns fleet operations</div>
+  <div class="ang">Engineer-operator (Mechanical Eng, Tohoku; ex-Vodafone IT PM), at SBRA since 2016. This role most likely rolls up through him. <b>Angle:</b> be precise and metric-driven, talk uptime, supplier management, disciplined scaling. <a href="https://theorg.com/org/softbank-robotics-europe/org-chart/naoki-mikoshiba">Profile (The Org)</a></div></div>
+
+  <div class="person"><span class="nm">Jordan Sun</span> <span class="flag">LIKELY</span><div class="ttl">VP, Product, Design &amp; Engineering — the "VP on the tech side"</div>
+  <div class="ang">Ex-Chief Innovation Officer for San José (grew a team 3→40), Afghanistan special-ops product lead, In-Q-Tel, US diplomat, Yale MBA. A mission-driven 0→1 builder, your strongest values match. <b>Angle:</b> building functions from scratch in messy real-world conditions, and that you ship your own tools. <a href="https://us.softbankrobotics.com/press/jordan-sun-product-head">Appointment</a> · <a href="https://www.robobusiness.com/speaker/jordan-sun/">RoboBusiness bio</a></div></div>
+
+  <div class="person"><span class="nm">Katya Akudovich</span> <span class="flag">LIKELY</span><div class="ttl">VP, New Business &amp; Strategic Growth (New Ventures)</div>
+  <div class="ang">Owns partnerships and growth (PandaDoc, ex-CEO LiveJournal, Google Play, Box). The "network strategy / growth plan" for this role likely sits here. <b>Angle:</b> partner and carrier integration; how operational reliability unlocks commercial growth. <a href="https://theorg.com/org/softbank-robotics-europe/org-chart/katya-akudovich">Profile (The Org)</a> · <a href="https://www.crunchbase.com/person/katya-akudovich">Crunchbase</a></div></div>
+
+  <div class="person"><span class="nm">Brady Watkins</span><div class="ttl">President &amp; General Manager</div>
+  <div class="ang">Commercialization leader, not an engineer (10+ yrs Ubisoft, Michigan Ross MBA; scaled Whiz to ~20K units). His "operationalizing it" quote is your anchor. <b>Angle:</b> lead with business outcomes, scale, and consistency. <a href="https://www.therobotreport.com/brady-watkins-appointed-as-president-of-softbank-robotics-america/">Profile (Robot Report)</a></div></div>
+
+  <div class="person"><span class="nm">Karen Wood-Maris</span><div class="ttl">VP, Revenue Operations &amp; Customer Experience (also Corporate Brand / PMO)</div>
+  <div class="ang">Ex-Accenture ($100M portfolio, transformation) + IBM. Complex tech implementations + change management. <b>Angle:</b> frame fleet reliability as customer experience. <a href="https://theorg.com/org/softbank-robotics-europe/org-chart/karen-wood-maris">Profile (The Org)</a></div></div>
+
+  <div class="person"><span class="nm">Dianna Wilusz</span><div class="ttl">VP, People Experience &amp; Operations</div>
+  <div class="ang">30+ yrs HR, founder Pendolino Group; theme is "automation without alienation." <b>Angle (values round):</b> leading people through change, augmenting humans not replacing them. <a href="https://theorg.com/org/softbank-robotics-europe/org-chart/dianna-wilusz-mba-sphr-shrmscp">Profile (The Org)</a></div></div>
+
+  <div class="person"><span class="nm">Bee Bee Nie</span><div class="ttl">VP, Finance &amp; Accounting</div>
+  <div class="ang">18+ yrs tech/SaaS finance. <a href="https://us.softbankrobotics.com/press/senior-appointments">Senior-appointments release</a></div></div>
+
+  <div class="person"><span class="nm">Andreas Raptopoulos</span><div class="ttl">Co-founder &amp; CEO, Matternet (the partner you'd help operationalize)</div>
+  <div class="ang">Aero engineer + Royal College of Art designer; built Matternet (2011) to "leapfrog road infrastructure." First commercial BVLOS over cities (Switzerland, 2017). <b>Angle:</b> reference his "new layer of infrastructure" thesis to show you see the whole board. <a href="https://www.weforum.org/people/andreas-raptopoulos/">WEF profile</a> · <a href="https://www.crunchbase.com/person/andreas-raptopoulos">Crunchbase</a></div></div>
+
+  <h2>Interview process</h2>
+  <ul>
+    <li><b>Style:</b> conversational, difficulty ~3/5 on Glassdoor (~43% positive, small sample).</li>
+    <li><b>Speed:</b> a friend's path moved fast, recruiter → VP → two more → offer same day. New team, open calendars, well below SBRA's ~48-day average.</li>
+    <li><b>Quirk:</b> they send bare <code>.ics</code> invites with little context. Don't read into a sparse invite.</li>
+  </ul>
+
+  <h2>All sources (clickable)</h2>
+  <h3>Company / partnership</h3>
+  <ul>
+    <li><a href="https://www.prnewswire.com/news-releases/softbank-robotics-america-announces-strategic-partnership-with-matternet-to-power-the-next-era-of-last-mile-delivery-302743832.html">SBRA × Matternet partnership (PR Newswire)</a> — anchor quote + integrator framing</li>
+    <li><a href="https://us.softbankrobotics.com/press/matternet-partnership">SBRA press page</a> · <a href="https://www.matternet.com/newsroom/matternet-and-softbank-robotics-america-announce-strategic-partnership">Matternet newsroom</a></li>
+    <li><a href="https://www.softbankrobotics.com/news/20260416/">SoftBank Robotics Group news</a> · <a href="https://www.citybiz.co/article/833508/matternet-and-softbank-robotics-america-announce-strategic-partnership-to-scale-drone-delivery-networks/">citybiz "Physical AI Takes Flight"</a></li>
+    <li><a href="https://www.prnewswire.com/news-releases/softbank-robotics-america-and-direct-supply-expand-strategic-partnership-for-senior-living-communities-302770154.html">SBRA × Direct Supply (senior living)</a> — the multi-platform play</li>
+    <li><a href="https://www.prnewswire.com/news-releases/softbank-robotics-america-expands-solution-portfolio-and-introduces-new-ai-enabled-service-robots-for-the-commercial-cleaning-industry-302703349.html">SBRA AI-enabled cleaning robots</a></li>
+    <li><a href="https://us.softbankrobotics.com/about">SBRA About / team</a></li>
+  </ul>
+  <h3>Interview process / comp</h3>
+  <ul>
+    <li><a href="https://www.glassdoor.com/Interview/SoftBank-Robotics-Interview-Questions-E625715.htm">Glassdoor interviews</a> · <a href="https://www.glassdoor.com/Salary/SoftBank-Robotics-Salaries-E625715.htm">Glassdoor salaries</a> · <a href="https://www.levels.fyi/companies/softbank-robotics/salaries">Levels.fyi</a></li>
+  </ul>
+  <h3>Video (watch before Monday)</h3>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=bGLBkTBzrKw">Matternet: healthcare drone delivery network</a> — see what the fleet does</li>
+    <li><a href="https://www.youtube.com/watch?v=2Mf_NlmRGQo">SoftBank Robotics Group corporate film</a> — the parent's "Physical AI" tone</li>
+    <li><a href="https://www.youtube.com/@softbankroboticsamerica1156">SBRA YouTube channel</a> · <a href="https://www.youtube.com/watch?v=bxaQ2TH9axQ">Matternet Silicon Valley launch</a></li>
+    <li><a href="https://www.linkedin.com/company/softbankrobotics">SBRA LinkedIn</a> — skim recent posts</li>
+  </ul>
+  <p class="src">NotebookLM notebook (citation-backed Q&amp;A): "SoftBank Robotics — Interview Prep" (88d4f120-5d90-4fc6-9fc9-37247e3e5717). Full text version: RESEARCH_DOSSIER.md in this folder.</p>
+
+</div>
+</div><!-- /#research -->
+</div><!-- /.wrap -->
+
+<script>
+  var KEY='sbk-interview-prep-2026-06-29-v1';
+  var doc=document.getElementById('doc');
+  var status=document.getElementById('save-status');
+  try{
+    var saved=localStorage.getItem(KEY);
+    if(saved){doc.innerHTML=saved; status.textContent='your edits restored';}
+  }catch(e){}
+  var t;
+  doc.addEventListener('input',function(){
+    status.textContent='saving…';
+    clearTimeout(t);
+    t=setTimeout(function(){
+      try{localStorage.setItem(KEY,doc.innerHTML);
+        status.textContent='saved '+new Date().toLocaleTimeString();}
+      catch(e){status.textContent='could not save (storage blocked)';}
+    },500);
+  });
+  window.resetDoc=function(){
+    if(confirm('Discard your edits and restore the original?')){
+      try{localStorage.removeItem(KEY);}catch(e){}
+      location.reload();
+    }
+  };
+
+  // Tab switching
+  var tabs=document.querySelectorAll('.tab');
+  var panels=document.querySelectorAll('.panel');
+  tabs.forEach(function(tb){
+    tb.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('active');});
+      panels.forEach(function(x){x.classList.remove('active');});
+      tb.classList.add('active');
+      var p=document.getElementById(tb.getAttribute('data-tab'));
+      if(p){p.classList.add('active');}
+      window.scrollTo(0,0);
+    });
+  });
+</script>
+</body>
+</html>
