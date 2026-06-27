@@ -118,6 +118,8 @@
   <b>★ Interview Cheat Card</b>
   <span id="st">editable · auto-saves</span>
   <span class="sp"></span>
+  <button class="g" onclick="location.href='./'">Research &amp; links →</button>
+  <button onclick="exp()">Export edits</button>
   <button onclick="window.print()">Print / PDF</button>
   <button class="g" onclick="rst()">Reset</button>
 </div>
@@ -349,6 +351,14 @@
   var t; W.addEventListener('input',function(){S.textContent='saving…';clearTimeout(t);
     t=setTimeout(function(){try{localStorage.setItem(K,W.innerHTML);S.textContent='saved '+new Date().toLocaleTimeString();}catch(e){S.textContent='could not save';}},500);});
   window.rst=function(){if(confirm('Discard your edits and restore the original?')){try{localStorage.removeItem(K);}catch(e){}location.reload();}};
+  window.exp=function(){try{
+    var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    var blob=new Blob([html],{type:'text/html'});var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');a.href=url;a.download='cheat-card-MY-EDITS.html';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},1500);
+    S.textContent='downloaded cheat-card-MY-EDITS.html — send it to me';
+  }catch(e){S.textContent='export failed';}};
 </script>
 </body>
 </html>
