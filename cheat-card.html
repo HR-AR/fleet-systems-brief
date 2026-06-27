@@ -191,7 +191,7 @@
 
   <div class="card star">
     <div class="qrow"><div class="badge">4</div><div class="q">Tell me about a fleet-management system you've built. <span class="star-lbl">★ lead with this</span></div></div>
-    <div class="open"><span class="l">TALK TRACK</span>This is the closest thing I've done to your world. I built our van delivery-management system. But here's the part that matters: I didn't build it from scratch. Priorities shifted to stabilizing our third-party network, so I took my requirements and built on a carrier's off-the-shelf platform instead. That became the app and TMS/DMS we used to scale the fleet <b>from a small pilot to roughly eighteen hundred in a year</b>. Early on, our systems and theirs couldn't talk. So I ran a team coordinating it all by hand, across our vendors, their sub-contractors, our team, and field ops. It worked. But headcount grew with the fleet. So I worked with the carrier to automate it. Standardized the comms. Killed the manual tracking. Alert only on true exceptions. Pushed the rest to the sub-contractors to manage themselves. That broke the headcount-grows-with-fleet curve.</div>
+    <div class="open"><span class="l">TALK TRACK</span>This is the closest thing I've done to your world. I built our van delivery-management system, the TMS and the app. And I built it <b>twice</b>. First from scratch. Then priorities shifted to stabilizing our gig-carrier network, so I took my requirements and rebuilt it on a third-party carrier's off-the-shelf platform instead. That became the app and TMS/DMS we used to scale the fleet <b>from a small pilot to roughly eighteen hundred in a year</b>. Early on, our systems and theirs couldn't talk. So I ran a team coordinating it all by hand, across our vendors, their sub-contractors, our team, and field ops. It worked. But headcount grew with the fleet. So I worked with the carrier to automate it. Standardized the comms. Killed the manual tracking. Alert only on true exceptions. Pushed the rest to the sub-contractors to manage themselves. That broke the headcount-grows-with-fleet curve.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Pivoted from in-house to building on a <b>third-party carrier's platform</b> (the integrator move).</li>
       <li>Scaled the fleet <span class="num">from a small pilot to ~1,800 vans in a year</span>.</li>
@@ -203,7 +203,7 @@
 
   <div class="card star">
     <div class="qrow"><div class="badge">5</div><div class="q">Tell me about a 0→1 you built. <span class="star-lbl">★ lead with this</span></div></div>
-    <div class="open"><span class="l">TALK TRACK</span>Amazon's robot-delivery-station launch program. I built it from zero. No playbook. I'd take an empty building and a robot platform and stand up the whole operation. Staffing, process, the ramp. The first ones were rough. We were learning what broke at scale in real time. So I built the playbook out of those failures. Cut ramp defects <b>seventeen percent</b>. And it became the standard the other launches used.</div>
+    <div class="open"><span class="l">TALK TRACK</span>Amazon's robot-delivery-station launch-execution program. I built it from zero. No playbook. Empty building and a robot platform to a full operation. I coordinated the construction, the process, the BOM, the S-DEN install, the timelines, testing, then the ramp. The first ones were rough. We were learning what broke at scale in real time. So I studied the standard conveyor-station launch, worked backwards, and built the playbook to standardize the next ones off the real failures. Cut ramp defects <b>seventeen percent</b>. And it became the standard the other launches used.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li><b>Empty building to a full robot operation</b>, no playbook.</li>
       <li>First launches were rough; learned what broke at scale.</li>
@@ -263,7 +263,7 @@
 
   <div class="card">
     <div class="qrow"><div class="badge">10</div><div class="q">Tell me about a failure.</div></div>
-    <div class="open"><span class="l">TALK TRACK</span>Early ARDS. I trusted the plan over what was actually breaking on the floor. We hit ramp defects I didn't see coming, because I trusted the model over the operators. The fix was to build the playbook from the floor up, not the top down. Now I start every launch by talking to the people doing the work. That one stuck with me.</div>
+    <div class="open"><span class="l">TALK TRACK</span>Early ARDS. I trusted the plan over what was actually breaking on the floor, and we hit ramp defects I didn't see coming. Here's why it surprised me. The old Mech-Lite stations could hit timelines by adding labor or paralleling builds. With the tech, the timelines had to be exact. The network couldn't come up until the S-DEN was installed, securing and externalizing the internal network. The autonomous robots couldn't run until the site was mapped. I'd trusted the model over the operators. So now I start every launch with the people doing the work. I map the real dependencies and limits, and build in buffers where the schedule compresses. That one stuck with me.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Trusted the model over the operators; hit defects I didn't see coming.</li>
       <li>Fix: build the playbook <b>from the floor up</b>.</li>
@@ -344,7 +344,7 @@
 </div>
 
 <script>
-  var K='interview-cheat-card-v4';
+  var K='interview-cheat-card-v5';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
