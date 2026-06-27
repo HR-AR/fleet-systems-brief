@@ -6,8 +6,8 @@
 <title>Interview Cheat Card</title>
 <style>
   :root{
-    --ink:#161c26; --muted:#677488; --faint:#93a0b4; --line:#e4e9f1; --paper:#ffffff;
-    --navy:#0d1730; --navy2:#16244a; --slate:#1d2b4d;
+    --ink:#161c26; --muted:#677488; --line:#e4e9f1; --paper:#ffffff;
+    --navy:#0d1730; --slate:#1d2b4d;
     --blue:#2f63d6; --blueimg:#e9f0ff; --gold:#c08a1e; --goldbg:#fbf3df;
     --grn:#0f7a3d; --grnbg:#ecf7ef; --grnln:#cfe7d4; --amber:#b8540a;
     --say:#f2f6ff; --redbg:#fff5ef; --redln:#f4d6c4; --red:#b8400a;
@@ -26,14 +26,12 @@
   .bar #st{font-size:11px;color:#9fb4dd}
   .wrap{max-width:880px;margin:0 auto;padding:16px 16px 90px}
 
-  /* HERO / pinned essentials */
-  .hero{position:relative;overflow:hidden;border-radius:18px;margin-bottom:18px;
+  .hero{position:relative;overflow:hidden;border-radius:18px;margin-bottom:16px;
     background:radial-gradient(120% 140% at 0% 0%, #1c2c54 0%, #0d1730 60%);
     color:#eaf0fb;padding:18px 20px;box-shadow:0 14px 34px rgba(10,20,45,.28)}
   .hero .kick{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#8ea7e0;font-weight:700;margin-bottom:11px}
   .stories{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:13px}
-  .story{background:linear-gradient(180deg,#22335c,#1a2a4f);border:1px solid #2c3e6b;
-    border-radius:12px;padding:10px 12px}
+  .story{background:linear-gradient(180deg,#22335c,#1a2a4f);border:1px solid #2c3e6b;border-radius:12px;padding:10px 12px}
   .story .t{font-weight:800;font-size:13px;color:#ffd24a;letter-spacing:.2px}
   .story .d{font-size:11.5px;color:#c4d2ef;line-height:1.4;margin-top:4px}
   .anchor{display:flex;gap:10px;align-items:flex-start;background:#0a1430;border:1px solid #243760;
@@ -43,6 +41,19 @@
   .anchor .qs{display:block;font-size:11px;color:#9fb4dd;font-weight:600;margin-top:3px}
   .rule{margin-top:11px;display:flex;flex-wrap:wrap;gap:6px}
   .rule span{font-size:11px;color:#0d1730;background:#cdddff;border-radius:20px;padding:3px 10px;font-weight:700}
+
+  /* 60-second opening */
+  .opening{position:relative;background:linear-gradient(180deg,#fffdf6,#fbf3df);border:1px solid #ecdcae;
+    border-radius:16px;padding:15px 17px 15px 19px;margin-bottom:18px;box-shadow:0 6px 18px rgba(150,110,20,.10)}
+  .opening::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:5px;border-radius:5px;background:linear-gradient(180deg,#e6b545,#c08a1e)}
+  .opening .ohd{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .opening .otag{background:#c08a1e;color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;border-radius:6px;padding:3px 8px}
+  .opening .ohd .ti{font-weight:800;color:#7a5510;font-size:13.5px}
+  .opening .ohd .clk{margin-left:auto;font-size:11px;color:#9a7320;font-weight:700}
+  .opening .otrack{font-size:15px;line-height:1.62;color:#2c2412}
+  .opening .otrack b{color:#5a3d0a}
+  .opening .beats{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .opening .beats span{background:#f3e6c4;color:#6e4e10;border:1px solid #e6d3a0;border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:700}
 
   h1{font-size:18px;color:var(--navy);margin:4px 2px 2px;letter-spacing:-.2px}
   .sub{color:var(--muted);font-size:13px;margin:0 2px 8px}
@@ -59,25 +70,25 @@
   .card.star::before{background:var(--gold)}
   .qrow{display:flex;align-items:flex-start;gap:11px}
   .badge{flex:none;width:26px;height:26px;border-radius:9px;background:linear-gradient(180deg,#3a6ee0,#2f63d6);
-    color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 3px 8px rgba(47,99,214,.32)}
+    color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(47,99,214,.32)}
   .card.star .badge{background:linear-gradient(180deg,#d8a33a,#c08a1e);box-shadow:0 3px 8px rgba(192,138,30,.3)}
   .q{font-weight:800;color:var(--navy);font-size:15.5px;line-height:1.35;padding-top:2px}
   .q .star-lbl{color:var(--amber);font-weight:800;font-size:12px;white-space:nowrap}
-  .say{position:relative;background:var(--say);border:1px solid #dfe9ff;border-radius:11px;
-    padding:10px 13px 10px 13px;margin:10px 0 9px;font-size:14.5px;line-height:1.58}
-  .say .l{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:1.4px;color:var(--blue);
+  .open{position:relative;background:var(--say);border:1px solid #dfe9ff;border-radius:11px;
+    padding:9px 12px;margin:10px 0 9px;font-size:14.5px;line-height:1.55}
+  .open .l{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:1.4px;color:var(--blue);
     background:#dfe9ff;border-radius:5px;padding:2px 6px;margin-right:7px;vertical-align:1.5px}
-  .hit{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
-  .hit .l{font-size:9.5px;font-weight:800;letter-spacing:1.4px;color:var(--grn)}
-  .chip{background:var(--grnbg);color:#13592f;border:1px solid var(--grnln);border-radius:20px;
-    padding:3.5px 11px;font-size:12px;font-weight:650}
+  .hl{margin:2px 0 0}
+  .hl .l{font-size:9.5px;font-weight:800;letter-spacing:1.4px;color:var(--grn);display:block;margin-bottom:4px}
+  .hl ul{margin:0;padding-left:17px}
+  .hl li{margin:4px 0;font-size:13.5px;line-height:1.45;color:#293344}
+  .hl li::marker{color:var(--grn)}
   .num{color:var(--amber);font-weight:800}
   b{color:var(--navy)}
 
   .foot{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
   .blk{border-radius:14px;padding:13px 15px;border:1px solid var(--line);background:var(--paper)}
-  .blk h3{margin:0 0 8px;font-size:12.5px;letter-spacing:.4px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+  .blk h3{margin:0 0 8px;font-size:12.5px;letter-spacing:.4px;text-transform:uppercase}
   .blk ul{margin:0;padding-left:17px}.blk li{margin:5px 0;font-size:13px;line-height:1.45}
   .blk.freeze{background:var(--goldbg);border-color:#ecdcae}.blk.freeze h3{color:var(--gold)}
   .blk.ask{background:var(--blueimg);border-color:#cfe0ff}.blk.ask h3{color:var(--blue)}
@@ -92,17 +103,14 @@
   .tmpl .step b{color:#fff}
   .blank{background:#11203c;border:1px dashed #3a4f7d;border-radius:11px;padding:12px 14px;margin:10px 0;font-size:13px;color:#aebfe2}
   .blank .ln{color:#6f84b3;letter-spacing:1px}
-  .tmpl a{color:#ffd24a}
   .tmpl .mind{font-size:13px;color:#bccbec;margin-top:12px}
 
-  @media (max-width:660px){
-    .stories{grid-template-columns:1fr}.foot{grid-template-columns:1fr}
-  }
+  @media (max-width:660px){.stories{grid-template-columns:1fr}.foot{grid-template-columns:1fr}}
   @media print{
     body{background:#fff}.bar{display:none}
-    .hero{background:#0d1730 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none}
-    .story,.anchor{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    .wrap{max-width:none;padding:0}.card,.blk,.tmpl{break-inside:avoid}
+    .hero,.opening{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none}
+    .hero{background:#0d1730 !important}.story,.anchor{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .wrap{max-width:none;padding:0}.card,.blk,.tmpl,.opening{break-inside:avoid}
     .tmpl{-webkit-print-color-adjust:exact;print-color-adjust:exact}
     @page{margin:10mm}
   }
@@ -134,80 +142,158 @@
     <div class="rule"><span>Warm</span><span>Specific</span><span>Let the excitement show</span><span>~60 sec max</span><span>Don't know it? Say so &amp; move</span></div>
   </div>
 
-  <h1>SoftBank Robotics — Fleet role · live answers</h1>
-  <p class="sub">Glance, don't read. The role (assume): a fleet of ground robots delivering <b>direct to consumers, to the door</b>. · <a href="./" style="color:var(--blue)">Full prep doc &amp; research →</a></p>
-  <div class="legend"><span><b>SAY</b> = the line you speak</span><span><b>HIT</b> = 3 anchors if you'd rather riff</span><span class="num"><b>orange</b> = the number to land</span></div>
+  <!-- 60-SECOND OPENING -->
+  <div class="opening">
+    <div class="ohd"><span class="otag">★ OPEN WITH THIS</span><span class="ti">Your 60-second opening — "Tell me about yourself" / "Walk me through your background"</span><span class="clk">~60 sec</span></div>
+    <div class="otrack">I'm a last-mile delivery operator and a builder, twelve years in. I started in rail at BNSF running terminals, including running a whole terminal <b>solo</b> through a downturn and rebuilding the team as volume came back. Then Amazon, where I built two things from scratch, including the launch program for their <b>autonomous robot delivery stations</b> — taking empty buildings to full robot operations. Now I'm a Director at Walmart over third-party delivery technology: I run fleet integrations and the AI behind <b>100,000+</b> deliveries a day, and I built our van delivery-management platform on a third-party carrier's system and scaled the fleet to <b>~1,800 vans in a year</b>. The thread through all of it is taking something new and making it run reliably at scale. SoftBank is the first place I've seen where robotics and last-mile are <b>the same job</b> — making robots deliver to the door — and that's exactly the work I want to be doing.</div>
+    <div class="beats">Hit the beats → <span>operator + builder, 12 yrs</span><span>BNSF: ran a terminal solo</span><span>Amazon: robot delivery 0→1</span><span>Walmart: 100K/day + van platform</span><span>through-line: new → reliable at scale</span><span>land on: robotics + last-mile = one job</span></div>
+  </div>
 
-  <div class="grp"><span>Open &amp; fit</span><span class="ln"></span></div>
+  <h1>SoftBank Robotics — Fleet role · answers</h1>
+  <p class="sub">The role (assume): a fleet of ground robots delivering <b>direct to consumers, to the door</b>. <b>OPEN</b> = how to start · <b>HIT THESE</b> = the points to cover · <span class="num">orange</span> = the number. · <a href="./" style="color:var(--blue)">Full prep doc →</a></p>
+
+  <div class="grp"><span>Fit &amp; motivation</span><span class="ln"></span></div>
 
   <div class="card">
-    <div class="qrow"><div class="badge">1</div><div class="q">Walk me through your background.</div></div>
-    <div class="say"><span class="l">SAY</span>Last-mile operator and a builder. Rail at BNSF, then Amazon where I built their robot-delivery-station launch program from scratch, now Director over third-party delivery tech at Walmart, behind <span class="num">100K+</span> deliveries a day. The thread: take something new and make it run reliably at scale.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">BNSF → Amazon robots → Walmart</span><span class="chip">100K/day</span><span class="chip">new → reliable at scale</span></div>
+    <div class="qrow"><div class="badge">1</div><div class="q">Why SoftBank, why now?</div></div>
+    <div class="open"><span class="l">OPEN</span>Robotics and last-mile have always been two separate jobs for me. Here they're one job.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>You make <b>robots deliver to the door at scale</b> — the exact problem I've worked my whole career.</li>
+      <li>I built robot-delivery operations at Amazon and I run last-mile to the customer at Walmart now.</li>
+      <li>The <b>integrator model</b> fits how I work — I make someone else's platform perform, I don't rebuild it.</li>
+      <li>Timing's right for me, and remote works well.</li>
+      <li>Let the genuine excitement show — I get to build something new <i>and</i> work on robots.</li>
+    </ul></div>
   </div>
 
   <div class="card">
-    <div class="qrow"><div class="badge">2</div><div class="q">Why SoftBank, why now?</div></div>
-    <div class="say"><span class="l">SAY</span>Robotics and last-mile have always been two separate jobs for me. Here they're one job. You make robots deliver to the door at scale, the exact problem I've worked my whole career. That's the pull, and the timing's right for me.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">two threads = one job</span><span class="chip">robots to the door</span><span class="chip">genuine excitement</span></div>
+    <div class="qrow"><div class="badge">2</div><div class="q">Why leave Walmart, really?</div></div>
+    <div class="open"><span class="l">OPEN</span>I'm not running from anything — I'm running toward the work.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>The 0→1 building I'm best at has become a small slice of my current role; here it's the whole job.</li>
+      <li>Robotics + last-mile as one job didn't exist for me until I saw this.</li>
+      <li>Remote and timing fit where I am, but the <b>pull is the work itself</b>.</li>
+      <li>Stay warm — don't disparage Walmart; speak to what's next, not what's wrong.</li>
+    </ul></div>
   </div>
 
   <div class="card">
     <div class="qrow"><div class="badge">3</div><div class="q">What do you know about what we're building?</div></div>
-    <div class="say"><span class="l">SAY</span>You've proven you can run robot fleets at scale through SBR Connect. What excites me is taking that <b>direct-to-consumer</b>, getting a delivery to someone's door with ground robots. As Brady put it, the challenge isn't the tech, it's operationalizing it, and that last hundred feet to the door is pure ops.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">SBR Connect fleet ops</span><span class="chip">to the door = consumer</span><span class="chip">operationalize, not tech</span></div>
+    <div class="open"><span class="l">OPEN</span>You've proven you can run robot fleets at scale through SBR Connect — the exciting part is taking that direct-to-consumer.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>The mission: getting a delivery to someone's <b>door</b> with ground robots — last-mile, to the consumer.</li>
+      <li><b>SBR Connect</b> is the fleet backbone (monitor activity, swap program for uptime).</li>
+      <li>The integrator thesis: you operationalize robots into the real world, you don't have to invent them.</li>
+      <li>Mirror <b>Brady's line</b>: "the challenge isn't the technology, it's operationalizing it." The last hundred feet is pure ops.</li>
+      <li>If drones come up: that's the Matternet aerial bet — context, not this role.</li>
+    </ul></div>
   </div>
 
   <div class="grp"><span>Your proof stories</span><span class="ln"></span></div>
 
   <div class="card star">
     <div class="qrow"><div class="badge">4</div><div class="q">Tell me about a fleet-management system you've built. <span class="star-lbl">★ lead with this</span></div></div>
-    <div class="say"><span class="l">SAY</span>Closest thing to your world. I built our van delivery-management system on a <b>third-party carrier's off-the-shelf platform</b> instead of from scratch, scaled the fleet <span class="num">from a small pilot to ~1,800</span> in a year, then automated it: standardized comms, killed manual issue-tracking, <b>alert only on true exceptions</b>, pushed alerts to sub-contractors. Broke the headcount-grows-with-fleet curve.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">built on a 3P platform (integrator)</span><span class="chip">small pilot→~1,800/yr</span><span class="chip">automate → true exceptions only</span></div>
+    <div class="open"><span class="l">OPEN</span>This is the closest thing I've done to your world.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Started building it in-house, then <b>pivoted to building on a third-party carrier's off-the-shelf platform</b> from my own requirements — the integrator move.</li>
+      <li>That became the app + TMS/DMS that scaled the fleet <span class="num">from a small pilot to ~1,800 vans in a year</span>.</li>
+      <li>Early on, internal and external systems couldn't talk, so I stood up a team to <b>manually</b> coordinate vendors, their sub-contractors, our team, and field ops — but headcount grew with the fleet.</li>
+      <li>So I worked with the carrier to <b>automate it</b>: standardized comms, killed manual issue-tracking, <b>alert only on true exceptions</b>, pushed alerts to sub-contractors to self-manage.</li>
+      <li>Result: <b>broke the headcount-grows-with-fleet curve.</b> Maps 1:1 to SBR Connect + the integrator model + exception-based fleet ops.</li>
+    </ul></div>
   </div>
 
   <div class="card star">
-    <div class="qrow"><div class="badge">5</div><div class="q">Tell me about a 0→1 you built.</div></div>
-    <div class="say"><span class="l">SAY</span>Amazon's robot-delivery-station launch program. No playbook. I'd take an empty building to a full robot operation. The first ones broke, I built the playbook out of those failures, cut ramp defects <span class="num">17%</span>, and it became the standard the other launches used.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">robot stations 0→1</span><span class="chip">empty building → ops</span><span class="chip">−17%, became the standard</span></div>
+    <div class="qrow"><div class="badge">5</div><div class="q">Tell me about a 0→1 you built. <span class="star-lbl">★ lead with this</span></div></div>
+    <div class="open"><span class="l">OPEN</span>Amazon's robot-delivery-station launch program — built from zero, no playbook.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>I'd take an <b>empty building to a full robot operation</b> — staffing, process, the ramp.</li>
+      <li>The first launches were rough; we were learning what broke at scale in real time.</li>
+      <li>I built the playbook <b>out of those failures</b>, cut ramp defects <span class="num">17%</span>.</li>
+      <li>It became the <b>standard</b> the other launches used.</li>
+      <li>⚑ Be ready to describe the robot in 2 sentences (form factor, autonomy, what the station did).</li>
+    </ul></div>
   </div>
 
   <div class="card">
     <div class="qrow"><div class="badge">6</div><div class="q">How do you think about fleet uptime / reliability at scale?</div></div>
-    <div class="say"><span class="l">SAY</span>My rule: know a robot is failing before the customer does. Exception alerting on a performance framework lifted on-time <span class="num">15%</span> and cut cancellations <span class="num">35%</span> at Walmart. For robots, uptime, MTBF, delivery success, cost-per-delivery, and a degraded robot pulls itself out of rotation instead of failing at the door.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">know before the customer</span><span class="chip">+15% / −35%</span><span class="chip">pull bad robot out of rotation</span></div>
+    <div class="open"><span class="l">OPEN</span>My rule: the team should know a robot is failing before the customer does.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>At Walmart, exception alerting on a performance framework lifted on-time <span class="num">15%</span> and cut cancellations <span class="num">35%</span>.</li>
+      <li>For robots, the metrics: <b>uptime, MTBF, delivery success rate, cost-per-delivery</b>.</li>
+      <li>A degraded robot should <b>pull itself out of rotation</b> instead of failing a delivery at the door.</li>
+      <li>Use SBR Connect as the layer that surfaces the true exceptions.</li>
+      <li>Reliability is a metrics-and-process game, not heroics.</li>
+    </ul></div>
   </div>
 
   <div class="card star">
     <div class="qrow"><div class="badge">7</div><div class="q">Tell me about building / right-sizing a team.</div></div>
-    <div class="say"><span class="l">SAY</span>BNSF, coal downturn, they handed me a whole terminal and I ran it solo with just the hourly supervisors. When volume came back I right-sized and rebuilt the team leaner. I've run both ends, strip an operation to lean, then build it back deliberately. That's the muscle a new team needs.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">ran a terminal solo</span><span class="chip">rebuilt leaner on rebound</span><span class="chip">both ends of the cycle</span></div>
+    <div class="open"><span class="l">OPEN</span>My favorite version is from BNSF.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Coal downturn — they handed me a terminal that had carried a superintendent, a terminal manager, four front-line trainmasters, and a division trainmaster.</li>
+      <li>I <b>ran it solo</b> with just the hourly yardmasters, building the process and systems to operate lean.</li>
+      <li>On rebound, I <b>right-sized and rebuilt</b> the team to a leaner shape (a terminal manager + 3 trainmasters + a neighboring yard for surge).</li>
+      <li>Ran both ends of the cycle: <b>strip to lean, then build back deliberately</b>.</li>
+      <li>Across the role: <b>673-person</b> team, cost <span class="num">−64%</span>, damage claims <span class="num">−65%</span>. That's the muscle a brand-new team needs.</li>
+    </ul></div>
   </div>
 
   <div class="grp"><span>Likely curveballs</span><span class="ln"></span></div>
 
   <div class="card">
     <div class="qrow"><div class="badge">8</div><div class="q">Where do you land on build vs. integrate?</div></div>
-    <div class="say"><span class="l">SAY</span>The discipline is not rebuilding the platform. I did exactly this, built our van system on a carrier's platform and made it perform to our standard at scale. The edge was never owning the tech, it was the ops around it. That's the integrator motion you run.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">don't rebuild the platform</span><span class="chip">make theirs perform</span><span class="chip">= your integrator model</span></div>
+    <div class="open"><span class="l">OPEN</span>The discipline in an integrator model is resisting the urge to rebuild the platform.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Your advantage is the <b>ops and the playbook around someone else's robot</b>.</li>
+      <li>I've literally done this — built our van system on a carrier's platform instead of from scratch, and made it perform to our standard at scale.</li>
+      <li>My edge was never owning the tech, it was the ops around it.</li>
+      <li>You run this same motion — Matternet and the Direct Supply deal are two instances of it.</li>
+    </ul></div>
   </div>
 
   <div class="card">
     <div class="qrow"><div class="badge">9</div><div class="q">You run 100K/day. We're pre-scale. Won't you be bored?</div></div>
-    <div class="say"><span class="l">SAY</span>The 0→1 is the part I actually want back. I've run the lean early stage, the BNSF terminal solo. Pre-scale is where I do my best work, I'd rather own the messy early version than maintain a mature one.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">0→1 is the draw</span><span class="chip">done lean-early before</span><span class="chip">own messy &gt; maintain mature</span></div>
+    <div class="open"><span class="l">OPEN</span>The 0→1 is the part I actually want back.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>At Walmart the scale is there, but the building-from-nothing has become a side project.</li>
+      <li>I've run the lean early stage before — the BNSF terminal, solo.</li>
+      <li><b>Pre-scale is where I do my best work.</b></li>
+      <li>I'd rather own the early, messy version than maintain a mature one.</li>
+    </ul></div>
   </div>
 
   <div class="card">
     <div class="qrow"><div class="badge">10</div><div class="q">Tell me about a failure.</div></div>
-    <div class="say"><span class="l">SAY</span>Early ARDS, I trusted the plan over what was breaking on the floor and hit ramp defects I didn't see coming. The fix was to build the playbook from the floor up. Now I start every launch with the people doing the work.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">trusted model over operators</span><span class="chip">the defects</span><span class="chip">now: floor-up, talk to the doers</span></div>
+    <div class="open"><span class="l">OPEN</span>Early ARDS, I trusted the plan over what was breaking on the floor.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>We hit ramp defects I didn't see coming — I trusted the model over the operators.</li>
+      <li>The fix was to <b>build the playbook from the floor up</b>, not the top down.</li>
+      <li>Changed behavior: I now start every launch by <b>talking to the people doing the work</b>.</li>
+      <li>Land the lesson, not the excuse — shows learning and humility.</li>
+    </ul></div>
   </div>
 
   <div class="card">
-    <div class="qrow"><div class="badge">11</div><div class="q">What don't you know about robot fleets / what would you learn?</div></div>
-    <div class="say"><span class="l">SAY</span>The reliability and economics layer is the same, uptime, MTBF, cost-per-delivery, the swap-and-repair loop. I'd ramp on the robot hardware and autonomy, your SBR Connect stack, and the doorstep handoff, which is the same human-robot handoff I worked at ARDS. Familiar ground.</div>
-    <div class="hit"><span class="l">HIT</span><span class="chip">economics layer = same</span><span class="chip">ramp: hardware + SBR Connect</span><span class="chip">doorstep handoff = ARDS</span></div>
+    <div class="qrow"><div class="badge">11</div><div class="q">You've run vehicle fleets, not robots. What's different / what would you learn?</div></div>
+    <div class="open"><span class="l">OPEN</span>The reliability and unit-economics layer is the same.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>What transfers: uptime, MTBF, cost-per-delivery, the swap-and-repair loop, deployment.</li>
+      <li>What I'd ramp on: the <b>robot hardware and autonomy</b>, your <b>SBR Connect</b> stack, the specific failure modes.</li>
+      <li>The <b>doorstep handoff</b> — the robot actually completing the delivery to a person — is the same human-robot handoff I worked at ARDS.</li>
+      <li>Be honest about what's new, confident about what transfers.</li>
+    </ul></div>
+  </div>
+
+  <div class="card">
+    <div class="qrow"><div class="badge">12</div><div class="q">How do you work across engineering, operations, and partners?</div></div>
+    <div class="open"><span class="l">OPEN</span>I sit in the middle by design — and I do the technical work myself.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>A <b>single source of truth</b> and clear ownership is what keeps it from falling apart.</li>
+      <li>I'm in the actual data (SQL, the AI tooling), so engineers treat me as a peer, not a layer to route around.</li>
+      <li>I'm the connector across engineering, ops, finance, and the carrier/partner side.</li>
+      <li>I hold partners to a shared SLA — the way I'd manage a robot platform partner.</li>
+    </ul></div>
   </div>
 
   <div class="foot">
@@ -225,45 +311,42 @@
       <ul>
         <li>Success in the first 6–12 months?</li>
         <li>How do you measure fleet reliability today, and the gaps?</li>
-        <li>New team, how much playbook exists vs. I'd build?</li>
-        <li>Who would I work with most across product / ops / partners?</li>
+        <li>New team — how much playbook exists vs. I'd build?</li>
+        <li>Who would I work with across product / ops / partners?</li>
       </ul>
     </div>
     <div class="blk dont">
       <h3>Don't</h3>
       <ul>
-        <li>Raise comp first, let them.</li>
-        <li>Trash your current job, run <i>toward</i> the work.</li>
-        <li>Recite or ramble, ~60 sec then stop.</li>
-        <li>Center the drones, your role is ground delivery to consumers.</li>
+        <li>Raise comp first — let them.</li>
+        <li>Trash your current job — run <i>toward</i> the work.</li>
+        <li>Recite or ramble — ~60 sec, then stop.</li>
+        <li>Center the drones — your role is ground delivery to consumers.</li>
       </ul>
     </div>
   </div>
 
-  <!-- ===================== REUSABLE TEMPLATE ===================== -->
   <div class="tmpl">
     <h2>Build your own cheat card (steal this)</h2>
-    <p class="intro">Made with one structure anyone can copy. The whole idea: <b>don't memorize answers, prep anchors you can talk from.</b></p>
-    <div class="step"><div class="sn">1</div><div><b>Pick your 3 power stories</b> that fit this exact job. Pin them on top, lead with them, bend most answers back to one. One real number each.</div></div>
-    <div class="step"><div class="sn">2</div><div><b>Find their one line.</b> Read the company's own words (press release, site, JD), pull one phrase that's also true of you, and mirror it back.</div></div>
-    <div class="step"><div class="sn">3</div><div><b>Per question, write 3 things, not a script:</b> a one-to-two-sentence <b>SAY</b> line, three <b>HIT</b> keyword anchors, and the <b>number</b> to land.</div></div>
-    <div class="step"><div class="sn">4</div><div><b>STAR, but short:</b> Situation (1 line) → Task → Action (the bulk) → Result (the number). Most people forget the Result, it's the whole point.</div></div>
-    <div class="step"><div class="sn">5</div><div><b>Say it out loud once.</b> A mock, a voice memo, a friend. Reading ≠ saying. Tighten anything over 60 seconds.</div></div>
-    <p class="intro" style="margin-top:14px"><b>Blank template, fill one card per question:</b></p>
+    <p class="intro">One structure anyone can copy. The idea: <b>don't memorize answers, prep anchors you can talk from.</b></p>
+    <div class="step"><div class="sn">1</div><div><b>Write a 60-second opening</b> — your background as a story with a through-line, ending on why this company. It's the answer to "tell me about yourself," and you'll reuse pieces of it all interview.</div></div>
+    <div class="step"><div class="sn">2</div><div><b>Pick 3 power stories</b> that fit this job, one real number each. Pin them on top and bend most answers back to one.</div></div>
+    <div class="step"><div class="sn">3</div><div><b>Find their one line</b> — read the company's own words, pull a phrase that's also true of you, and mirror it back.</div></div>
+    <div class="step"><div class="sn">4</div><div><b>Per question, write an OPEN line + 4-6 "HIT THESE" points + the number</b> — not a script. You read the points and talk like a person.</div></div>
+    <div class="step"><div class="sn">5</div><div><b>STAR, but short:</b> Situation → Task → Action (the bulk) → Result (the number). Then say it out loud once.</div></div>
     <div class="blank">
       <div><b>Q:</b> <span class="ln">_______________________________________________</span></div>
-      <div style="margin-top:7px"><b>SAY:</b> <span class="ln">_________________________________________</span></div>
-      <div><span class="ln">______________________________________________________</span></div>
-      <div style="margin-top:7px"><b>HIT:</b> <span class="ln">______</span> · <span class="ln">______</span> · <span class="ln">______</span> &nbsp;&nbsp; <b>Number:</b> <span class="ln">________</span></div>
+      <div style="margin-top:7px"><b>OPEN:</b> <span class="ln">________________________________________</span></div>
+      <div style="margin-top:7px"><b>HIT THESE:</b> <span class="ln">______</span> · <span class="ln">______</span> · <span class="ln">______</span> · <span class="ln">______</span></div>
+      <div style="margin-top:7px"><b>Number:</b> <span class="ln">________</span></div>
     </div>
-    <p class="mind"><b>Questions to prep for almost any role:</b> walk me through your background · why this company / why now · why leave · a 0→1 you built · biggest challenge solved · a failure &amp; what changed · how you work across teams · what you're looking for · 2 questions for them.</p>
-    <p class="mind"><b>The mindset:</b> warm, specific, one number per answer, ~60 seconds, then stop and let them drive. If you don't know it, say so and pivot to the closest thing you do. <i>This page is editable, clear it and write your own.</i></p>
+    <p class="mind"><b>The mindset:</b> warm, specific, one number per answer, ~60 seconds, then stop and let them drive. If you don't know it, say so and pivot to the closest thing you do. <i>This page is editable — clear it and write your own.</i></p>
   </div>
 
 </div>
 
 <script>
-  var K='interview-cheat-card-v2';
+  var K='interview-cheat-card-v3';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
