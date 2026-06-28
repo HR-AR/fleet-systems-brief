@@ -105,9 +105,55 @@
   .blank .ln{color:#6f84b3;letter-spacing:1px}
   .tmpl .mind{font-size:13px;color:#bccbec;margin-top:12px}
 
-  @media (max-width:660px){.stories{grid-template-columns:1fr}.foot{grid-template-columns:1fr}}
+  /* ---- App-bar brand + LIVE MODE switch ---- */
+  .bar .brand{display:flex;flex-direction:column;line-height:1.15}
+  .bar .brand b{font-size:14px;letter-spacing:.2px;color:#fff}
+  .bar .brand .role{font-size:10.5px;color:#8ea7e0;font-weight:600;letter-spacing:.3px}
+  #readinghint{display:none;font-size:12px;font-weight:800;color:#ffd24a;letter-spacing:.3px}
+  .live-toggle{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;background:#10204a;border:1px solid #2c3e6b;border-radius:24px;padding:5px 9px 5px 13px}
+  .live-toggle .lab{font-size:11px;font-weight:800;letter-spacing:1px;color:#cdddff}
+  .live-toggle .sw{width:38px;height:22px;border-radius:20px;background:#33436b;position:relative;transition:background .15s;flex:none}
+  .live-toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s}
+
+  /* ---- LIVE MODE (reading view): question + talk track + SHORT, big, hide the rest ---- */
+  body.live{background:#0b1733}
+  body.live .bar{background:#0b1733}
+  body.live .bar .o{display:none}
+  body.live #readinghint{display:inline}
+  body.live .live-toggle .sw{background:#ffd24a}
+  body.live .live-toggle .sw::after{left:18px}
+  body.live .live-toggle .lab{color:#ffd24a}
+  body.live .hero,body.live .grp,body.live .sub,body.live h1,
+  body.live .opening .ohd,body.live .opening .beats,
+  body.live .card .hl,body.live .star-lbl,body.live .foot,body.live .tmpl{display:none}
+  body.live .wrap{max-width:840px;padding-top:10px}
+  body.live .opening{background:#101f3f;border:1px solid #24365f;box-shadow:none}
+  body.live .opening::before{background:#ffd24a}
+  body.live .opening .otrack{font-size:23px;line-height:1.62;color:#eef2fb}
+  body.live .opening .otrack b{color:#ffd24a}
+  body.live .card{background:#101f3f;border:1px solid #24365f;box-shadow:none;padding:18px 18px 18px 20px;margin:13px 0}
+  body.live .card::before,body.live .card.star::before{background:#ffd24a;opacity:1}
+  body.live .qrow{align-items:center}
+  body.live .badge{width:34px;height:34px;font-size:16px;border-radius:10px}
+  body.live .q{font-size:23px;color:#fff;line-height:1.32}
+  body.live .open{background:transparent;border:0;padding:8px 0 0;font-size:22px;line-height:1.6;color:#e7eefb;margin:8px 0 0}
+  body.live .open .l{display:inline-block;color:#8fb0ff;background:transparent;font-size:11px;letter-spacing:1.4px;margin:0 0 5px;padding:0;vertical-align:baseline}
+  body.live .open b{color:#fff}
+  body.live .shortv{display:block;background:rgba(255,210,74,.08);border:1px dashed #6a5a2e;color:#ffe6a6;font-size:18px;line-height:1.5;margin-top:11px;padding:10px 13px}
+  body.live .shortv .l{color:#ffd24a;font-size:11px;margin-right:8px}
+  body.live .shortv b{color:#fff}
+  body.live .num{color:#ffd24a}
+
+  @media (max-width:660px){.stories{grid-template-columns:1fr}.foot{grid-template-columns:1fr}
+    .bar{flex-wrap:wrap}body.live .q{font-size:21px}body.live .open,body.live .opening .otrack{font-size:20px}}
   @media print{
     body{background:#fff}.bar{display:none}
+    /* never print the reading view — always the full prep card */
+    body.live{background:#fff}
+    body.live .hero,body.live .grp,body.live .sub,body.live h1,body.live .opening .ohd,body.live .opening .beats,body.live .card .hl,body.live .star-lbl,body.live .foot,body.live .tmpl{display:revert}
+    body.live .wrap{max-width:none}
+    body.live .opening,body.live .card{background:revert;border:revert}
+    body.live .q,body.live .open,body.live .open .l,body.live .opening .otrack,body.live .shortv{font-size:revert;color:revert;background:revert;border:revert;padding:revert}
     .hero,.opening{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none}
     .hero{background:#0d1730 !important}.story,.anchor{-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .wrap{max-width:none;padding:0}.card,.blk,.tmpl,.opening{break-inside:avoid}
@@ -118,13 +164,15 @@
 </head>
 <body>
 <div class="bar">
-  <b>★ Interview Cheat Card</b>
-  <span id="st">editable · auto-saves</span>
+  <div class="brand"><b>Interview Cheat Card</b><span class="role">Fleet Systems Technical Lead · SoftBank</span></div>
+  <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
+  <span id="st" class="o">editable · auto-saves</span>
   <span class="sp"></span>
-  <button class="g" onclick="location.href='./'">Research &amp; links →</button>
-  <button onclick="exp()">Export edits</button>
-  <button onclick="window.print()">Print / PDF</button>
-  <button class="g" onclick="rst()">Reset</button>
+  <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
+  <button class="g o" onclick="exp()">Export edits</button>
+  <button class="g o" onclick="pr()">Print / PDF</button>
+  <button class="g o" onclick="rst()">Reset</button>
+  <div class="live-toggle" onclick="lv()" role="switch" tabindex="0" aria-label="Live mode"><span class="lab">LIVE MODE</span><span class="sw"></span></div>
 </div>
 
 <div class="wrap">
@@ -349,10 +397,20 @@
 </div>
 
 <script>
-  var K='interview-cheat-card-v6';
+  var K='interview-cheat-card-v7';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
+  // LIVE MODE: big reading view (question + talk track + SHORT). Locks editing while reading.
+  window.lv=function(){var on=document.body.classList.toggle('live');
+    W.setAttribute('contenteditable', on?'false':'true');
+    try{if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();}catch(e){}
+    window.scrollTo(0,0);};
+  // Print always shows the FULL prep card, even from live mode.
+  window.pr=function(){var was=document.body.classList.contains('live');
+    if(was){document.body.classList.remove('live');W.setAttribute('contenteditable','true');}
+    window.print();
+    if(was)setTimeout(function(){document.body.classList.add('live');W.setAttribute('contenteditable','false');},60);};
   var t; W.addEventListener('input',function(){S.textContent='saving…';clearTimeout(t);
     t=setTimeout(function(){try{localStorage.setItem(K,W.innerHTML);S.textContent='saved '+new Date().toLocaleTimeString();}catch(e){S.textContent='could not save';}},500);});
   window.rst=function(){if(confirm('Discard your edits and restore the original?')){try{localStorage.removeItem(K);}catch(e){}location.reload();}};
