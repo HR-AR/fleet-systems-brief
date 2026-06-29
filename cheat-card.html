@@ -126,6 +126,8 @@
   .rpanel.on{display:block}
   .r1recap{background:#101f3f;border:1px solid #24365f;border-left:4px solid #ffd24a;border-radius:12px;padding:13px 15px;color:#dbe6fb;font-size:14px;line-height:1.55;margin:11px 0}
   .r1recap b{color:#ffd24a}
+  .connect{background:#0f1e3a;border:1px solid #2c3e6b;border-left:4px solid #4fd1a0;border-radius:11px;padding:10px 13px;color:#cfe0ff;font-size:13.5px;line-height:1.5;margin:11px 0}
+  .connect b{color:#7df0c4}
 
   /* ---- LIVE MODE (reading view): question + talk track + SHORT, big, hide the rest ---- */
   body.live{background:#0b1733}
@@ -183,7 +185,7 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn on" onclick="rnd(2)">R2 · Hiring Mgr</button><button class="rn" onclick="rnd(3)">R3 · HR VP</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29 · R1-R3 tabs</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29b · R1-R3 · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -376,6 +378,8 @@
 
   <div class="rpanel on" data-r="2">
   <div class="grp"><span>Round 2 · The hiring manager — VP Fleet</span><span class="ln"></span></div>
+  <div class="connect"><b>🤝 Connect:</b> The hiring manager is a competitor, a former D1 athlete wired for the scoreboard and performing under pressure. So are you. Talk metrics, reps, winning when it counts (the terminal you ran solo through a downturn). Yours is the operator-competitor wiring.</div>
+  <div class="coachnote"><b>🛠 Show him you build:</b> He lives in AI execution, so don't sound like a manager who delegates the tech. You write the SQL and BigQuery yourself, you built the AI fleet-ops assistant (<span class="num">−75%</span> manual monitoring) and the intelligent container/load-sequencing. Outside work you ship real software: Fleet Track (a live dispatch product), a model-agnostic AI layer, a local agentic-AI stack on your own hardware. You publish all of it. The Flow Architect · github.com/HR-AR · hrrashid.com. This cheat card is something you built with AI. Drop one or two, lightly. Proof beats claims.</div>
 
   <div class="card">
     <div class="qrow"><div class="badge">13</div><div class="q">HIRING MGR · What metrics would you track to run this fleet?</div></div>
@@ -387,6 +391,7 @@
       <li>On-time + uptime = customer/merchant trust.</li>
       <li><b>Robots-per-operator = the scaling lever</b> (industry ~50-100).</li>
       <li>Same shape as my Walmart CPD / on-time / cancellations / batch density.</li>
+      <li class="energy">I'd build this scoreboard myself. I write the SQL/BigQuery, so I read fleet data directly.</li>
     </ul></div>
   </div>
 
@@ -398,6 +403,7 @@
       <li>Manual worked but headcount grew with the fleet.</li>
       <li>Automated → <b>exception-only alerting</b> → broke the curve.</li>
       <li>Robot version = push <b>robots-per-operator</b>; degraded robot self-removes.</li>
+      <li>The lever is AI, and I build it. I built our AI fleet-ops assistant (<span class="num">−75%</span> manual monitoring) and the intelligent container/load-sequencing myself.</li>
       <li class="energy">This is the hiring manager's home turf (deep automation / AI-execution background). Match it.</li>
     </ul></div>
   </div>
@@ -410,6 +416,20 @@
       <li>Cost: intervention is the big variable → autonomy % + robots/operator.</li>
       <li>Uptime via repair/swap loop.</li>
       <li>Grind each input, not one big move = my CPD work, new form factor.</li>
+      <li>I grind those inputs in the data myself, SQL and BigQuery, not from a dashboard someone hands me.</li>
+    </ul></div>
+  </div>
+
+  <div class="card star">
+    <div class="qrow"><div class="badge">16</div><div class="q">HIRING MGR · How hands-on are you technically? <span class="star-lbl">★ prove you build</span></div></div>
+    <div class="open"><span class="l">TALK TRACK</span>I build. I'm a director, but I'm in the work. I write the SQL and the BigQuery myself, so I read the fleet data directly instead of waiting on a deck. I built our AI fleet-ops assistant that cut manual monitoring <b>seventy-five percent</b>, and the intelligent container-sequencing that decides load order. Outside work I ship software for real. I built Fleet Track, a live dispatch product for delivery contractors. I built a model-agnostic AI layer so my tooling isn't locked to one vendor, and I run a local agentic-AI stack on my own hardware. I publish all of it. The Flow Architect, my GitHub, hrrashid.com. Honestly, this prep doc in front of you is something I built with AI. So when I say I'd build the ops and telemetry layer for the robot fleet, I mean I'd be in it, not managing from a distance.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>I build, I don't just manage. I write the SQL and BigQuery myself, I built our AI fleet-ops assistant that cut monitoring <b>75%</b>, and outside work I ship real software. Fleet Track, a local agentic-AI stack, all published. This prep doc is something I built with AI.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Director, but <b>in the work</b>. SQL and BigQuery myself, reading fleet data directly.</li>
+      <li>Built the <b>AI fleet-ops assistant</b> (<span class="num">−75%</span> monitoring) + intelligent container/load-sequencing.</li>
+      <li>Ship software outside work: <b>Fleet Track</b> (live dispatch product), a model-agnostic AI layer, local agentic-AI on my own hardware.</li>
+      <li>I publish it: The Flow Architect · github.com/HR-AR · hrrashid.com. This cheat card too.</li>
+      <li>So I'd <b>build</b> the robot fleet's ops + telemetry layer, not manage it from a distance.</li>
     </ul></div>
   </div>
 
@@ -417,9 +437,10 @@
 
   <div class="rpanel" data-r="3">
   <div class="grp"><span>Round 3 · The HR VP</span><span class="ln"></span></div>
+  <div class="connect"><b>🤝 Connect:</b> The HR VP cares for a parent, so family and people are her thing (her "advance the human experience" thesis). Bring a genuine human-centered angle where "why now" comes up.</div>
 
   <div class="card">
-    <div class="qrow"><div class="badge">16</div><div class="q">HR VP · How does automation affect the people?</div></div>
+    <div class="qrow"><div class="badge">17</div><div class="q">HR VP · How does automation affect the people?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>People have to win too, or the automation doesn't stick. When I built the AI fleet-ops assistant the fear was "are you automating my job?" I framed it as taking the 2am screen-watching off their plate so they could do the work only a human can — judgment calls, vendor relationships. Monitoring dropped <b>75%</b>, nobody lost a seat, and the team felt more valued, not less. That's how I think about robots and people: augment the human, don't replace them.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>People have to win too. My AI assistant cut manual monitoring 75% — nobody lost a seat, they moved to judgment work. Augment the human, don't replace them.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -431,7 +452,7 @@
   </div>
 
   <div class="card">
-    <div class="qrow"><div class="badge">17</div><div class="q">HR VP · Biggest weakness?</div></div>
+    <div class="qrow"><div class="badge">18</div><div class="q">HR VP · Biggest weakness?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>I run hot on building. I'll chase the zero-to-one and have to be deliberate about handing the steady-state off so I don't hold onto it too long. What I've learned is to build the playbook and the team to own it, then move to the next problem. It's honestly why I want a 0→1 role — I'm matching the job to where I'm strongest, not hiding the gap.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>I run hot on building — I'll chase the 0→1 and have to be deliberate handing steady-state off. I've learned to build the playbook and team to own it, then move on.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -442,7 +463,7 @@
   </div>
 
   <div class="card">
-    <div class="qrow"><div class="badge">18</div><div class="q">HR VP · What are your comp expectations? <span class="star-lbl">★ she knows comp cold</span></div></div>
+    <div class="qrow"><div class="badge">19</div><div class="q">HR VP · What are your comp expectations? <span class="star-lbl">★ she knows comp cold</span></div></div>
     <div class="open"><span class="l">TALK TRACK</span>I'll be direct, and I'd frame it as total comp, base plus equity plus bonus, against a target that reflects the step up in scope and level. But I care more about the scope, the level, and the equity than any single number. This is a zero-to-one role owning launch, ops, the tech, and network growth, so I'd want the level to reflect that. And I know private equity doesn't work like public stock, so I'd love to understand how you structure it.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Be direct, <b>total-comp</b> framing: current base/equity/bonus → a target reflecting the bigger scope + level.</li>
@@ -508,7 +529,7 @@
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
-  // Round tabs (R1 recap / R2 Charles / R3 Diana). Pills live in the bar; panels in .wrap.
+  // Round tabs (R1 recap / R2 hiring mgr / R3 HR VP). Pills live in the bar; panels in .wrap.
   window.rnd=function(n,scroll){
     document.querySelectorAll('.rpanel').forEach(function(p){p.classList.toggle('on', p.getAttribute('data-r')==String(n));});
     document.querySelectorAll('.rnav .rn').forEach(function(b,i){b.classList.toggle('on', i==(n-1));});
