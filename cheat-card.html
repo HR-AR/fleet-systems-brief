@@ -118,6 +118,14 @@
   .live-toggle .lab{font-size:11px;font-weight:800;letter-spacing:1px;color:#cdddff}
   .live-toggle .sw{width:38px;height:22px;border-radius:20px;background:#33436b;position:relative;transition:background .15s;flex:none}
   .live-toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s}
+  /* ---- Round switcher (R1/R2/R3 interview tabs) ---- */
+  .rnav{display:flex;gap:6px;flex-wrap:wrap}
+  .rnav .rn{font:800 11px/1 inherit;letter-spacing:.4px;color:#bcd0f5;background:#10204a;border:1px solid #2c3e6b;border-radius:8px;padding:8px 11px;cursor:pointer}
+  .rnav .rn.on{background:#ffd24a;color:#0d1730;border-color:#ffd24a}
+  .rpanel{display:none}
+  .rpanel.on{display:block}
+  .r1recap{background:#101f3f;border:1px solid #24365f;border-left:4px solid #ffd24a;border-radius:12px;padding:13px 15px;color:#dbe6fb;font-size:14px;line-height:1.55;margin:11px 0}
+  .r1recap b{color:#ffd24a}
 
   /* ---- LIVE MODE (reading view): question + talk track + SHORT, big, hide the rest ---- */
   body.live{background:#0b1733}
@@ -172,9 +180,10 @@
 <body>
 <div class="bar">
   <div class="brand"><b>Interview Cheat Card</b><span class="role">Fleet Systems Technical Lead · SoftBank</span></div>
+  <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn on" onclick="rnd(2)">R2 · Hiring Mgr</button><button class="rn" onclick="rnd(3)">R3 · HR VP</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 28 · food-delivery</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29 · R1-R3 tabs</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -359,7 +368,14 @@
     </ul></div>
   </div>
 
-  <div class="grp"><span>★ Round 2 — the hiring manager (VP) &amp; the HR VP · net-new</span><span class="ln"></span></div>
+  <div id="rounds" class="grp"><span>★ Interview-specific — pick the round (tabs up top)</span><span class="ln"></span></div>
+
+  <div class="rpanel" data-r="1">
+    <div class="r1recap"><b>Round 1 · Recruiter screen — done, went well.</b> She's lining up the next two rounds. Nothing new to drill here. Lead with the answers above, keep the energy up, and close by pre-answering the next question like you did Monday.</div>
+  </div>
+
+  <div class="rpanel on" data-r="2">
+  <div class="grp"><span>Round 2 · The hiring manager — VP Fleet</span><span class="ln"></span></div>
 
   <div class="card">
     <div class="qrow"><div class="badge">13</div><div class="q">HIRING MGR · What metrics would you track to run this fleet?</div></div>
@@ -397,6 +413,11 @@
     </ul></div>
   </div>
 
+  </div><!-- /r2 -->
+
+  <div class="rpanel" data-r="3">
+  <div class="grp"><span>Round 3 · The HR VP</span><span class="ln"></span></div>
+
   <div class="card">
     <div class="qrow"><div class="badge">16</div><div class="q">HR VP · How does automation affect the people?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>People have to win too, or the automation doesn't stick. When I built the AI fleet-ops assistant the fear was "are you automating my job?" I framed it as taking the 2am screen-watching off their plate so they could do the work only a human can — judgment calls, vendor relationships. Monitoring dropped <b>75%</b>, nobody lost a seat, and the team felt more valued, not less. That's how I think about robots and people: augment the human, don't replace them.</div>
@@ -430,6 +451,8 @@
       <li>Anchor on reasoning + private-equity mechanics, not a quoted number. The HR VP knows comp cold.</li>
     </ul></div>
   </div>
+
+  </div><!-- /r3 -->
 
   <div class="foot">
     <div class="blk freeze">
@@ -481,10 +504,18 @@
 </div>
 
 <script>
-  var K='interview-cheat-card-v7';
+  var K='interview-cheat-card-v8';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
+  // Round tabs (R1 recap / R2 Charles / R3 Diana). Pills live in the bar; panels in .wrap.
+  window.rnd=function(n,scroll){
+    document.querySelectorAll('.rpanel').forEach(function(p){p.classList.toggle('on', p.getAttribute('data-r')==String(n));});
+    document.querySelectorAll('.rnav .rn').forEach(function(b,i){b.classList.toggle('on', i==(n-1));});
+    if(scroll!==false){var r=document.getElementById('rounds'); if(r)r.scrollIntoView({block:'start',behavior:'smooth'});}
+  };
+  // On load, sync the pills to whichever panel is active (default R2), no scroll.
+  try{var _o=document.querySelector('.rpanel.on'); window.rnd(_o?+_o.getAttribute('data-r'):2,false);}catch(e){}
   // LIVE MODE: big reading view (question + talk track + SHORT). Locks editing while reading.
   window.lv=function(){var on=document.body.classList.toggle('live');
     W.setAttribute('contenteditable', on?'false':'true');
