@@ -131,11 +131,14 @@
   body.live .opening .ohd,body.live .opening .beats,
   body.live .card .hl,body.live .star-lbl,body.live .foot,body.live .tmpl{display:none}
   body.live .wrap{max-width:840px;padding-top:10px}
-  body.live .opening{background:#101f3f;border:1px solid #24365f;box-shadow:none}
+  body.live .opening{background:#101f3f;border:1px solid #24365f;box-shadow:none;color:#eef2fb}
+  /* defensive: keep reading-mode text light even if in-browser editing strips inner classes */
+  body.live .opening,body.live .opening *{color:#eef2fb}
+  body.live .opening b{color:#ffd24a}
   body.live .opening::before{background:#ffd24a}
   body.live .opening .otrack{font-size:23px;line-height:1.62;color:#eef2fb}
   body.live .opening .otrack b{color:#ffd24a}
-  body.live .card{background:#101f3f;border:1px solid #24365f;box-shadow:none;padding:18px 18px 18px 20px;margin:13px 0}
+  body.live .card{background:#101f3f;border:1px solid #24365f;box-shadow:none;padding:18px 18px 18px 20px;margin:13px 0;color:#e7eefb}
   body.live .card::before,body.live .card.star::before{background:#ffd24a;opacity:1}
   body.live .qrow{align-items:center}
   body.live .badge{width:34px;height:34px;font-size:16px;border-radius:10px}
