@@ -139,13 +139,11 @@
   .tg{font:800 11px/1 inherit;letter-spacing:.3px;color:#bcd0f5;background:#16264a;border:1px solid #2c3e6b;border-radius:7px;padding:6px 10px;cursor:pointer;white-space:nowrap}
   .tg.tgr{background:#ffd24a;color:#0d1730;border-color:#ffd24a}
   @media print{.tagbar{display:none}}
-  /* ---- Per-interviewer personal touches on the shared cards (show for active round) ---- */
-  .touch{display:none;border:1px solid #cfe7d4;border-left:3px solid #0f7a3d;background:#f0f8f2;border-radius:9px;padding:7px 11px;margin:9px 0 2px;font-size:12.5px;line-height:1.45;color:#1f4a31}
-  .touch b{color:#0f7a3d}
-  body.rnd2 .touch[data-when="2"],body.rnd3 .touch[data-when="3"]{display:block}
-  body.live .touch{background:rgba(79,209,160,.10);border-color:#2f5a4a;color:#cdeede;font-size:15px}
-  body.live .touch b{color:#7df0c4}
-  @media print{.touch{display:block !important}}
+  /* ---- Per-interviewer inline variants woven INTO the talk track (show for active round) ---- */
+  .ins{display:none;background:#fbf3df;border-bottom:2px solid rgba(192,138,30,.5);border-radius:3px;padding:0 2px}
+  body.rnd2 .ins[data-when="2"],body.rnd3 .ins[data-when="3"]{display:inline}
+  body.live .ins{background:rgba(255,210,74,.14);border-bottom-color:#ffd24a;color:#fff}
+  @media print{.ins{display:inline !important}}
 
   /* ---- LIVE MODE (reading view): question + talk track + SHORT, big, hide the rest ---- */
   body.live{background:#0b1733}
@@ -203,7 +201,7 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn on" onclick="rnd(2)">R2 · Hiring Mgr</button><button class="rn" onclick="rnd(3)">R3 · HR VP</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29d · recap + touches · public</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29e · inline variants · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -241,24 +239,19 @@
 
   <div class="opening">
     <div class="ohd"><span class="otag">★ OPEN WITH THIS</span><span class="ti">Your 60-second opening — "Tell me about yourself" / "Walk me through your background"</span><span class="clk">~60 sec</span></div>
-    <div class="otrack">I'm a last-mile delivery operator and a builder. Twelve years in. I started in rail at BNSF running terminals, including running a whole terminal <b>solo</b> through a downturn and rebuilding the team when volume came back. Then Amazon, where I built two things from scratch. The big one: the launch program for their <b>autonomous robot delivery stations</b>. Empty buildings to full robot operations. Now I'm a Director at Walmart over third-party delivery technology. I run fleet integrations and the AI behind <b>100,000+</b> deliveries a day, and I built our van delivery platform on a third-party carrier's system and scaled the fleet to <b>~1,800 vans in a year</b>. The thread through all of it is the same. Take something new, make it run reliably at scale. SoftBank is the first place I've seen where robotics and last-mile are <b>the same job</b>. Making robots deliver to the door. That's exactly the work I want to be doing.</div>
+    <div class="otrack">I'm a last-mile delivery operator and a builder. Twelve years in. I started in rail at BNSF running terminals, including running a whole terminal <b>solo</b> through a downturn and rebuilding the team when volume came back. Then Amazon, where I built two things from scratch. The big one: the launch program for their <b>autonomous robot delivery stations</b>. Empty buildings to full robot operations. Now I'm a Director at Walmart over third-party delivery technology. I run fleet integrations and the AI behind <b>100,000+</b> deliveries a day, and I built our van delivery platform on a third-party carrier's system and scaled the fleet to <b>~1,800 vans in a year</b>. The thread through all of it is the same. Take something new, make it run reliably at scale. SoftBank is the first place I've seen where robotics and last-mile are <b>the same job</b>. Making robots deliver to the door. That's exactly the work I want to be doing. <span class="ins" data-when="2">And the part I'd own here, running the scoreboard and pushing the cost curve, is exactly where I do my best work.</span><span class="ins" data-when="3">And building something new that makes the work better for the people running it, that's the part I'm most excited about.</span></div>
     <div class="beats">Hit the beats → <span>operator + builder, 12 yrs</span><span>BNSF: ran a terminal solo</span><span>Amazon: robot delivery 0→1</span><span>Walmart: 100K/day + van platform</span><span>through-line: new → reliable at scale</span><span>land on: robotics + last-mile = one job</span><span class="energy">↑ energy — this is your story, let it show</span></div>
   </div>
-
-  <div class="touch" data-when="2"><b>▸ Angle for the hiring manager:</b> open on the scoreboard. He runs on metrics and competes (former D1 athlete), so land the numbers hard (100K/day, ~1,800 vans, −17%) and let the drive show. "Operationalize it to measurable outcomes" is his language — mirror it.</div>
-  <div class="touch" data-when="3"><b>▸ Angle for the HR VP:</b> open on people and the why-now. She's the culture, and her thesis is "advance the human experience." Land the BNSF team-rebuild and the augment-not-replace thread, and let the warmth show.</div>
 
   <h1>SoftBank — Food-delivery robot fleet role · answers</h1>
   <p class="sub">The role: a fleet of autonomous robots delivering <b>food to consumers, to the door</b> (Coco/Serve-style). <b>TALK TRACK</b> = what to say (your voice) · <b>HIT THESE</b> = points to land · <span class="num">orange</span> = the number. · <a href="./" style="color:var(--blue)">Full prep doc →</a></p>
   <div class="coachnote"><b>From the mock:</b> bring real energy on your background, your AI builds, and how fun this would be to build. Smile, lean in. Nail the SoftBank answer (card 3): investment firm → this team does food delivery, Coco / Serve.</div>
 
   <div class="grp"><span>Fit &amp; motivation</span><span class="ln"></span></div>
-  <div class="touch" data-when="2"><b>▸ Angle for the hiring manager:</b> frame "why SoftBank" as the ops + scale challenge, operationalizing robots into measurable outcomes. On "why leave Walmart," lead with wanting the 0→1 build and the cost-curve problem. That's his home turf.</div>
-  <div class="touch" data-when="3"><b>▸ Angle for the HR VP:</b> frame "why SoftBank" around building something that helps people, and the timing being right for you. Keep "why leave Walmart" warm and growth-oriented, never a complaint.</div>
 
   <div class="card" id="g-mot">
     <div class="qrow"><div class="badge">1</div><div class="q">Why SoftBank, why now?</div></div>
-    <div class="open"><span class="l">TALK TRACK</span>Honestly? This is the first role where the two halves of my career stop being separate jobs. For years I've run last-mile operations. Separately, I've put robotics into the real world, like Amazon's robot delivery stations. Here, that's one job. You take a fleet of robots and make them deliver to someone's door, reliably, at scale. I've spent my whole career on that exact problem, just without the robot being the product. The integrator angle fits how I work too. I'm best taking someone else's platform and making it perform, which is what I did with our carriers at Walmart. So this isn't a stretch I'm reaching for. It's what I've been building toward. And honestly, building this out from here sounds like the fun part.</div>
+    <div class="open"><span class="l">TALK TRACK</span>Honestly? This is the first role where the two halves of my career stop being separate jobs. For years I've run last-mile operations. Separately, I've put robotics into the real world, like Amazon's robot delivery stations. Here, that's one job. You take a fleet of robots and make them deliver to someone's door, reliably, at scale. I've spent my whole career on that exact problem, just without the robot being the product. The integrator angle fits how I work too. I'm best taking someone else's platform and making it perform, which is what I did with our carriers at Walmart. So this isn't a stretch I'm reaching for. It's what I've been building toward. And honestly, building this out from here sounds like the fun part. <span class="ins" data-when="2">For me the real pull is the operational problem, taking robots and making them hit their numbers reliably, at scale.</span><span class="ins" data-when="3">And the pull is building something new that makes the work better for people, not just cheaper.</span></div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Two halves of my career, robotics and last-mile, become <b>one job</b> here.</li>
       <li>Robots delivering <b>to the door, reliably, at scale</b> = the exact problem I've worked.</li>
@@ -271,7 +264,7 @@
 
   <div class="card">
     <div class="qrow"><div class="badge">2</div><div class="q">Why leave Walmart, really?</div></div>
-    <div class="open"><span class="l">TALK TRACK</span>I'm not running from anything. Walmart's been good to me. But the part I'm best at, building from zero, has shrunk to maybe ten percent of my job. The rest is running a mature operation. And robotics plus last-mile as one job just didn't exist for me until I saw this. The remote and the timing work for where I am. But the real pull is the work. I'd rather build the new thing than maintain the big thing.</div>
+    <div class="open"><span class="l">TALK TRACK</span>I'm not running from anything. Walmart's been good to me. But the part I'm best at, building from zero, has shrunk to maybe ten percent of my job. The rest is running a mature operation. And robotics plus last-mile as one job just didn't exist for me until I saw this. The remote and the timing work for where I am. But the real pull is the work. I'd rather build the new thing than maintain the big thing. <span class="ins" data-when="2">I want the cost-curve and scale problem back, the part where I build the playbook and run it off the metrics.</span><span class="ins" data-when="3">And the timing is right for me to build something new and bring the team along with it.</span></div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Not running away. The 0→1 I'm best at is now a slice of my job; here it's the whole job.</li>
       <li>Robotics + last-mile as one job didn't exist for me until this.</li>
@@ -345,12 +338,10 @@
   </div>
 
   <div class="grp"><span>Likely curveballs</span><span class="ln"></span></div>
-  <div class="touch" data-when="2"><b>▸ Angle for the hiring manager:</b> stay metrics-first — robots-per-operator, exception-only ops, CPD inputs. He respects the person who runs the scoreboard and builds the playbook, so prove both.</div>
-  <div class="touch" data-when="3"><b>▸ Angle for the HR VP:</b> on weakness and failure, be genuine and show you scale people, not just systems (build the playbook + the team to own it). Tie automation back to "people win too."</div>
 
   <div class="card" id="g-curve">
     <div class="qrow"><div class="badge">8</div><div class="q">Where do you land on build vs. integrate?</div></div>
-    <div class="open"><span class="l">TALK TRACK</span>The discipline in an integrator model is not rebuilding the platform. Your advantage is the ops and the playbook around someone else's robot. I've lived this. I built our van system on a carrier's platform instead of from scratch, and made it perform to our standard at scale. My edge was never owning the tech. It was the ops around it. That's the exact motion here. You operate the robots, Coco's and Serve's, you don't have to build them.</div>
+    <div class="open"><span class="l">TALK TRACK</span>The discipline in an integrator model is not rebuilding the platform. Your advantage is the ops and the playbook around someone else's robot. I've lived this. I built our van system on a carrier's platform instead of from scratch, and made it perform to our standard at scale. My edge was never owning the tech. It was the ops around it. That's the exact motion here. You operate the robots, Coco's and Serve's, you don't have to build them. <span class="ins" data-when="2">The discipline is all in the ops and the playbook around their robot, and that's the muscle I'd bring.</span></div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>Discipline: <b>don't rebuild the platform</b>.</li>
       <li>I built our van system on a carrier's platform and made it perform to our standard.</li>
@@ -361,7 +352,7 @@
 
   <div class="card">
     <div class="qrow"><div class="badge">9</div><div class="q">You run 100K/day. We're pre-scale. Won't you be bored?</div></div>
-    <div class="open"><span class="l">TALK TRACK</span>The 0→1 is the part I actually want back. At Walmart the scale is there, but building from nothing has become a side project. I've run the lean early stage before. The BNSF terminal, solo. Pre-scale is where I do my best work. Honestly, I'd rather own the messy early version than maintain a mature one.</div>
+    <div class="open"><span class="l">TALK TRACK</span>The 0→1 is the part I actually want back. At Walmart the scale is there, but building from nothing has become a side project. I've run the lean early stage before. The BNSF terminal, solo. Pre-scale is where I do my best work. Honestly, I'd rather own the messy early version than maintain a mature one. <span class="ins" data-when="2">The grind of pushing the metrics input by input is the fun part for me, not the downside.</span><span class="ins" data-when="3">And in the early stage you get to build the team and the culture from scratch, which is the part I care about.</span></div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
       <li>The 0→1 is the <b>draw</b>, not a downside.</li>
       <li>At Walmart scale is there, but building-from-nothing is now a side project.</li>
