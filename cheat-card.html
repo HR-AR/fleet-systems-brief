@@ -208,7 +208,7 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn on" onclick="rnd(2)">R2 · Hiring Mgr</button><button class="rn" onclick="rnd(3)">R3 · HR VP</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29f · per-interviewer · public</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29g · stay-in-place · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -218,7 +218,7 @@
 </div>
 
 <div class="tagbar">
-  <span class="tglab">FOR THIS ROUND ↓</span>
+  <span class="tglab">THIS ROUND'S Qs ↓</span>
   <span id="rtags" class="rtags"></span>
   <span class="tgdiv"></span>
   <span class="tglab2">ANY ROUND</span>
@@ -578,7 +578,8 @@
     document.querySelectorAll('.rnav .rn').forEach(function(b,i){b.classList.toggle('on', i==(n-1));});
     document.body.classList.remove('rnd1','rnd2','rnd3'); document.body.classList.add('rnd'+n);
     renderTags(n);
-    if(scroll!==false){var r=document.getElementById('rounds'); if(r)r.scrollIntoView({block:'start',behavior:'smooth'});}
+    // No auto-scroll: switching rounds re-renders the top answers in place. Use the gold
+    // "FOR THIS ROUND" tag chips to jump to the interview-specific cards on purpose.
   };
   // On load, sync the pills to whichever panel is active (default R2), no scroll.
   try{var _o=document.querySelector('.rpanel.on'); window.rnd(_o?+_o.getAttribute('data-r'):2,false);}catch(e){}
