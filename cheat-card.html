@@ -13,6 +13,7 @@
     --say:#f2f6ff; --redbg:#fff5ef; --redln:#f4d6c4; --red:#b8400a;
   }
   *{box-sizing:border-box}
+  html{scroll-padding-top:96px}
   html,body{margin:0;padding:0;color:var(--ink);
     background:linear-gradient(180deg,#eef2f9 0%,#e7ecf5 100%);background-attachment:fixed;
     font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
@@ -128,6 +129,16 @@
   .r1recap b{color:#ffd24a}
   .connect{background:#0f1e3a;border:1px solid #2c3e6b;border-left:4px solid #4fd1a0;border-radius:11px;padding:10px 13px;color:#cfe0ff;font-size:13.5px;line-height:1.5;margin:11px 0}
   .connect b{color:#7df0c4}
+  /* ---- Tag bar: tap a question-type, jump straight to it ---- */
+  .tagbar{position:sticky;top:48px;z-index:29;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+    background:rgba(16,32,74,.97);backdrop-filter:saturate(150%) blur(6px);padding:7px 16px;border-bottom:1px solid #233258}
+  .tagbar .tglab{font-size:9.5px;font-weight:800;letter-spacing:1px;color:#ffd24a}
+  .tagbar .tglab2{font-size:9.5px;font-weight:800;letter-spacing:1px;color:#7f93bb}
+  .tagbar .tgdiv{width:1px;height:16px;background:#33436b;margin:0 3px}
+  .tagbar .rtags{display:flex;gap:6px;flex-wrap:wrap}
+  .tg{font:800 11px/1 inherit;letter-spacing:.3px;color:#bcd0f5;background:#16264a;border:1px solid #2c3e6b;border-radius:7px;padding:6px 10px;cursor:pointer;white-space:nowrap}
+  .tg.tgr{background:#ffd24a;color:#0d1730;border-color:#ffd24a}
+  @media print{.tagbar{display:none}}
 
   /* ---- LIVE MODE (reading view): question + talk track + SHORT, big, hide the rest ---- */
   body.live{background:#0b1733}
@@ -185,13 +196,23 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn on" onclick="rnd(2)">R2 · Hiring Mgr</button><button class="rn" onclick="rnd(3)">R3 · HR VP</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29b · R1-R3 · public</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29c · R1-R3 · tags · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
   <button class="g o" onclick="pr()">Print / PDF</button>
   <button class="g o" onclick="rst()">Reset</button>
   <div class="live-toggle" onclick="lv()" role="switch" tabindex="0" aria-label="Live mode"><span class="lab">LIVE MODE</span><span class="sw"></span></div>
+</div>
+
+<div class="tagbar">
+  <span class="tglab">FOR THIS ROUND ↓</span>
+  <span id="rtags" class="rtags"></span>
+  <span class="tgdiv"></span>
+  <span class="tglab2">ANY ROUND</span>
+  <button class="tg" onclick="jump('g-mot')">Motivation</button>
+  <button class="tg" onclick="jump('g-proof')">Proof</button>
+  <button class="tg" onclick="jump('g-curve')">Curveballs</button>
 </div>
 
 <div class="wrap">
@@ -223,7 +244,7 @@
 
   <div class="grp"><span>Fit &amp; motivation</span><span class="ln"></span></div>
 
-  <div class="card">
+  <div class="card" id="g-mot">
     <div class="qrow"><div class="badge">1</div><div class="q">Why SoftBank, why now?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>Honestly? This is the first role where the two halves of my career stop being separate jobs. For years I've run last-mile operations. Separately, I've put robotics into the real world, like Amazon's robot delivery stations. Here, that's one job. You take a fleet of robots and make them deliver to someone's door, reliably, at scale. I've spent my whole career on that exact problem, just without the robot being the product. The integrator angle fits how I work too. I'm best taking someone else's platform and making it perform, which is what I did with our carriers at Walmart. So this isn't a stretch I'm reaching for. It's what I've been building toward. And honestly, building this out from here sounds like the fun part.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -261,7 +282,7 @@
 
   <div class="grp"><span>Your proof stories</span><span class="ln"></span></div>
 
-  <div class="card star">
+  <div class="card star" id="g-proof">
     <div class="qrow"><div class="badge">4</div><div class="q">Tell me about a fleet-management system you've built. <span class="star-lbl">★ lead with this</span></div></div>
     <div class="open"><span class="l">TALK TRACK</span>This is the closest thing I've done to your world. I built our van delivery-management system, the TMS and the app. And I built it <b>twice</b>. First from scratch. Then priorities shifted to stabilizing our gig-carrier network, so I took my requirements and rebuilt it on a third-party carrier's off-the-shelf platform instead. That became the app and TMS/DMS we used to scale the fleet <b>from a small pilot to roughly eighteen hundred in a year</b>. Early on, our systems and theirs couldn't talk. So I ran a team coordinating it all by hand, across our vendors, their sub-contractors, our team, and field ops. It worked. But headcount grew with the fleet. So I worked with the carrier to automate it. Standardized the comms. Killed the manual tracking. Alert only on true exceptions. Pushed the rest to the sub-contractors to manage themselves. That broke the headcount-grows-with-fleet curve.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -313,7 +334,7 @@
 
   <div class="grp"><span>Likely curveballs</span><span class="ln"></span></div>
 
-  <div class="card">
+  <div class="card" id="g-curve">
     <div class="qrow"><div class="badge">8</div><div class="q">Where do you land on build vs. integrate?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>The discipline in an integrator model is not rebuilding the platform. Your advantage is the ops and the playbook around someone else's robot. I've lived this. I built our van system on a carrier's platform instead of from scratch, and made it perform to our standard at scale. My edge was never owning the tech. It was the ops around it. That's the exact motion here. You operate the robots, Coco's and Serve's, you don't have to build them.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -381,7 +402,7 @@
   <div class="connect"><b>🤝 Connect:</b> The hiring manager is a competitor, a former D1 athlete wired for the scoreboard and performing under pressure. So are you. Talk metrics, reps, winning when it counts (the terminal you ran solo through a downturn). Yours is the operator-competitor wiring.</div>
   <div class="coachnote"><b>🛠 Show him you build:</b> He lives in AI execution, so don't sound like a manager who delegates the tech. You write the SQL and BigQuery yourself. You built the AI fleet-ops assistant (<span class="num">−75%</span> manual monitoring), built the standard for that fleet software, and worked with the carrier to stand it up. You also wrote the business requirements and a working prototype for containerizing by geography instead of by sequence. Outside work you build your own AI tooling: a model-agnostic layer so you're not locked to one vendor, and a local agentic-AI stack on your own hardware. You publish it. The Flow Architect · github.com/HR-AR · hrrashid.com. Drop one or two, lightly. Proof beats claims.</div>
 
-  <div class="card">
+  <div class="card" id="c13">
     <div class="qrow"><div class="badge">13</div><div class="q">HIRING MGR · What metrics would you track to run this fleet?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>The scoreboard's clear to me. Deliveries per robot per day and utilization tell me if the network's earning. Cost per delivery and the intervention rate tell me if the unit economics work — every teleop takeover is a human I'm paying. On-time and uptime tell me if customers and merchants trust it. The one I'd obsess over early is <b>robots per remote operator</b>, because that ratio is what makes the whole thing scale. At Walmart I ran CPD, on-time, cancellations, batch density. Same shape, new form factor.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>Deliveries per robot per day, cost per delivery, intervention rate, on-time, uptime — and the one I'd obsess over is <b>robots per operator</b>, because that ratio is what makes it scale.</div>
@@ -395,7 +416,7 @@
     </ul></div>
   </div>
 
-  <div class="card star">
+  <div class="card star" id="c14">
     <div class="qrow"><div class="badge">14</div><div class="q">HIRING MGR · How do you scale ops without scaling headcount? <span class="star-lbl">★ his bullseye</span></div></div>
     <div class="open"><span class="l">TALK TRACK</span>My favorite problem, and the reason I'd be useful fast. On the vans, manual coordination worked but headcount grew with the fleet. So I automated it — standardized the comms, killed manual tracking, alerted only on <b>true exceptions</b>, and pushed those alerts to the sub-contractors to self-manage. That broke the headcount-grows-with-fleet curve. For robots it's the same lever: push how many a single operator can safely run, with better exception routing and a robot that pulls itself out of rotation when it's degraded.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>On the vans I automated to alert only on true exceptions and broke the headcount-grows-with-fleet curve. For robots the lever is robots-per-operator — push it with exception routing.</div>
@@ -408,7 +429,7 @@
     </ul></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="c15">
     <div class="qrow"><div class="badge">15</div><div class="q">HIRING MGR · What's the path to sub-dollar cost per delivery?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>Two levers. Push the numerator — deliveries per robot per day, through utilization and merchant density so robots aren't idle. And crush cost — the biggest variable is human intervention, so every point of autonomy and every robot-per-operator gain drops CPD, plus tight repair-and-swap loops for uptime. You don't hit sub-dollar with one big move; you grind each input. That's exactly the CPD work I did on the van and gig side.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -420,7 +441,7 @@
     </ul></div>
   </div>
 
-  <div class="card star">
+  <div class="card star" id="c16">
     <div class="qrow"><div class="badge">16</div><div class="q">HIRING MGR · How hands-on are you technically? <span class="star-lbl">★ prove you build</span></div></div>
     <div class="open"><span class="l">TALK TRACK</span>I build. I'm a director, but I'm in the work. I write the SQL and the BigQuery myself, so I read the fleet data directly instead of waiting on a deck. I built our AI fleet-ops assistant that cut manual monitoring <b>seventy-five percent</b>. I built the standard for that fleet software and worked with the carrier to stand it up. I also wrote the business requirements and a working prototype that showed we could containerize by geography instead of by sequence. That lifts deliveries per hour on the vans, and on the gig side it builds condensed trips when a route has to be broken down. Outside work I build my own AI tooling, a model-agnostic layer so I'm not locked to one vendor and a local agentic-AI stack on my own hardware, and I publish it. The Flow Architect, my GitHub, hrrashid.com. So when I say I'd build the ops and telemetry layer for the robot fleet, I mean I'd be in it, not managing from a distance.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>I build, I don't just manage. I write the SQL and BigQuery myself, I built our AI fleet-ops assistant that cut monitoring <b>75%</b> and the standard for that fleet software, and I wrote the BRD and a prototype for containerizing by geography. Outside work I build my own AI tooling, all published.</div>
@@ -440,7 +461,7 @@
   <div class="grp"><span>Round 3 · The HR VP</span><span class="ln"></span></div>
   <div class="connect"><b>🤝 Connect:</b> The HR VP cares for a parent, so family and people are her thing (her "advance the human experience" thesis). Bring a genuine human-centered angle where "why now" comes up.</div>
 
-  <div class="card">
+  <div class="card" id="c17">
     <div class="qrow"><div class="badge">17</div><div class="q">HR VP · How does automation affect the people?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>People have to win too, or the automation doesn't stick. When I built the AI fleet-ops assistant the fear was "are you automating my job?" I framed it as taking the 2am screen-watching off their plate so they could do the work only a human can — judgment calls, vendor relationships. Monitoring dropped <b>75%</b>, nobody lost a seat, and the team felt more valued, not less. That's how I think about robots and people: augment the human, don't replace them.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>People have to win too. My AI assistant cut manual monitoring 75% — nobody lost a seat, they moved to judgment work. Augment the human, don't replace them.</div>
@@ -452,7 +473,7 @@
     </ul></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="c18">
     <div class="qrow"><div class="badge">18</div><div class="q">HR VP · Biggest weakness?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>I run hot on building. I'll chase the zero-to-one and have to be deliberate about handing the steady-state off so I don't hold onto it too long. What I've learned is to build the playbook and the team to own it, then move to the next problem. It's honestly why I want a 0→1 role — I'm matching the job to where I'm strongest, not hiding the gap.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>I run hot on building — I'll chase the 0→1 and have to be deliberate handing steady-state off. I've learned to build the playbook and team to own it, then move on.</div>
@@ -463,7 +484,7 @@
     </ul></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="c19">
     <div class="qrow"><div class="badge">19</div><div class="q">HR VP · What are your comp expectations? <span class="star-lbl">★ she knows comp cold</span></div></div>
     <div class="open"><span class="l">TALK TRACK</span>I'll be direct, and I'd frame it as total comp, base plus equity plus bonus, against a target that reflects the step up in scope and level. But I care more about the scope, the level, and the equity than any single number. This is a zero-to-one role owning launch, ops, the tech, and network growth, so I'd want the level to reflect that. And I know private equity doesn't work like public stock, so I'd love to understand how you structure it.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -530,10 +551,18 @@
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
+  // Tag bar: tap a question-type to jump; the round tags re-render per active interviewer.
+  window.jump=function(id){var el=document.getElementById(id); if(el)el.scrollIntoView({block:'start',behavior:'smooth'});};
+  window.renderTags=function(n){var el=document.getElementById('rtags'); if(!el)return;
+    var sets={1:[['rounds','Recruiter recap']],
+      2:[['c13','KPIs'],['c14','Scale ★'],['c15','CPD'],['c16','Technical']],
+      3:[['c17','People'],['c18','Weakness'],['c19','Comp']]};
+    el.innerHTML=(sets[n]||[]).map(function(x){return '<button class="tg tgr" onclick="jump(\''+x[0]+'\')">'+x[1]+'</button>';}).join('');};
   // Round tabs (R1 recap / R2 hiring mgr / R3 HR VP). Pills live in the bar; panels in .wrap.
   window.rnd=function(n,scroll){
     document.querySelectorAll('.rpanel').forEach(function(p){p.classList.toggle('on', p.getAttribute('data-r')==String(n));});
     document.querySelectorAll('.rnav .rn').forEach(function(b,i){b.classList.toggle('on', i==(n-1));});
+    renderTags(n);
     if(scroll!==false){var r=document.getElementById('rounds'); if(r)r.scrollIntoView({block:'start',behavior:'smooth'});}
   };
   // On load, sync the pills to whichever panel is active (default R2), no scroll.
