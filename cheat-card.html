@@ -139,6 +139,13 @@
   .tg{font:800 11px/1 inherit;letter-spacing:.3px;color:#bcd0f5;background:#16264a;border:1px solid #2c3e6b;border-radius:7px;padding:6px 10px;cursor:pointer;white-space:nowrap}
   .tg.tgr{background:#ffd24a;color:#0d1730;border-color:#ffd24a}
   @media print{.tagbar{display:none}}
+  /* ---- Per-interviewer personal touches on the shared cards (show for active round) ---- */
+  .touch{display:none;border:1px solid #cfe7d4;border-left:3px solid #0f7a3d;background:#f0f8f2;border-radius:9px;padding:7px 11px;margin:9px 0 2px;font-size:12.5px;line-height:1.45;color:#1f4a31}
+  .touch b{color:#0f7a3d}
+  body.rnd2 .touch[data-when="2"],body.rnd3 .touch[data-when="3"]{display:block}
+  body.live .touch{background:rgba(79,209,160,.10);border-color:#2f5a4a;color:#cdeede;font-size:15px}
+  body.live .touch b{color:#7df0c4}
+  @media print{.touch{display:block !important}}
 
   /* ---- LIVE MODE (reading view): question + talk track + SHORT, big, hide the rest ---- */
   body.live{background:#0b1733}
@@ -196,7 +203,7 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn on" onclick="rnd(2)">R2 · Hiring Mgr</button><button class="rn" onclick="rnd(3)">R3 · HR VP</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29c · R1-R3 · tags · public</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jun 29d · recap + touches · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -238,11 +245,16 @@
     <div class="beats">Hit the beats → <span>operator + builder, 12 yrs</span><span>BNSF: ran a terminal solo</span><span>Amazon: robot delivery 0→1</span><span>Walmart: 100K/day + van platform</span><span>through-line: new → reliable at scale</span><span>land on: robotics + last-mile = one job</span><span class="energy">↑ energy — this is your story, let it show</span></div>
   </div>
 
+  <div class="touch" data-when="2"><b>▸ Angle for the hiring manager:</b> open on the scoreboard. He runs on metrics and competes (former D1 athlete), so land the numbers hard (100K/day, ~1,800 vans, −17%) and let the drive show. "Operationalize it to measurable outcomes" is his language — mirror it.</div>
+  <div class="touch" data-when="3"><b>▸ Angle for the HR VP:</b> open on people and the why-now. She's the culture, and her thesis is "advance the human experience." Land the BNSF team-rebuild and the augment-not-replace thread, and let the warmth show.</div>
+
   <h1>SoftBank — Food-delivery robot fleet role · answers</h1>
   <p class="sub">The role: a fleet of autonomous robots delivering <b>food to consumers, to the door</b> (Coco/Serve-style). <b>TALK TRACK</b> = what to say (your voice) · <b>HIT THESE</b> = points to land · <span class="num">orange</span> = the number. · <a href="./" style="color:var(--blue)">Full prep doc →</a></p>
   <div class="coachnote"><b>From the mock:</b> bring real energy on your background, your AI builds, and how fun this would be to build. Smile, lean in. Nail the SoftBank answer (card 3): investment firm → this team does food delivery, Coco / Serve.</div>
 
   <div class="grp"><span>Fit &amp; motivation</span><span class="ln"></span></div>
+  <div class="touch" data-when="2"><b>▸ Angle for the hiring manager:</b> frame "why SoftBank" as the ops + scale challenge, operationalizing robots into measurable outcomes. On "why leave Walmart," lead with wanting the 0→1 build and the cost-curve problem. That's his home turf.</div>
+  <div class="touch" data-when="3"><b>▸ Angle for the HR VP:</b> frame "why SoftBank" around building something that helps people, and the timing being right for you. Keep "why leave Walmart" warm and growth-oriented, never a complaint.</div>
 
   <div class="card" id="g-mot">
     <div class="qrow"><div class="badge">1</div><div class="q">Why SoftBank, why now?</div></div>
@@ -333,6 +345,8 @@
   </div>
 
   <div class="grp"><span>Likely curveballs</span><span class="ln"></span></div>
+  <div class="touch" data-when="2"><b>▸ Angle for the hiring manager:</b> stay metrics-first — robots-per-operator, exception-only ops, CPD inputs. He respects the person who runs the scoreboard and builds the playbook, so prove both.</div>
+  <div class="touch" data-when="3"><b>▸ Angle for the HR VP:</b> on weakness and failure, be genuine and show you scale people, not just systems (build the playbook + the team to own it). Tie automation back to "people win too."</div>
 
   <div class="card" id="g-curve">
     <div class="qrow"><div class="badge">8</div><div class="q">Where do you land on build vs. integrate?</div></div>
@@ -394,7 +408,7 @@
   <div id="rounds" class="grp"><span>★ Interview-specific — pick the round (tabs up top)</span><span class="ln"></span></div>
 
   <div class="rpanel" data-r="1">
-    <div class="r1recap"><b>Round 1 · Recruiter screen — done, went well.</b> She's lining up the next two rounds. Nothing new to drill here. Lead with the answers above, keep the energy up, and close by pre-answering the next question like you did Monday.</div>
+    <div class="r1recap"><b>Round 1 · Recruiter screen (~22 min) — went well.</b> What she actually asked, and what landed: <b>(1) Your background</b> — the 12-yr operator+builder open (BNSF solo terminal → Amazon ARDS 0→1 → Walmart 100K/day + ~1,800 vans); she said "sounds amazing, sounds like fun." <b>(2) Metrics you track</b> — you led with CPD, batch density, cancellations, on-time, reliability. <b>(3) What drives you</b> — building and 0→1, getting deep in the weeds. <b>(4) Something you built</b> — the full ARDS playbook (−17% ramp defects, became the standard). <b>(5) Comp + relocation</b> — you stayed open and framed it as a step up with the right safety nets. <b>Outcome:</b> she's scheduling the hiring manager first, then the HR VP, ASAP, and flagged comp is the HR VP's lane. <b>Net:</b> your open, metrics, and ARDS story all landed — reuse them. Go deeper on KPIs/scale for the hiring manager; save the comp specifics for the HR VP.</div>
   </div>
 
   <div class="rpanel on" data-r="2">
@@ -562,6 +576,7 @@
   window.rnd=function(n,scroll){
     document.querySelectorAll('.rpanel').forEach(function(p){p.classList.toggle('on', p.getAttribute('data-r')==String(n));});
     document.querySelectorAll('.rnav .rn').forEach(function(b,i){b.classList.toggle('on', i==(n-1));});
+    document.body.classList.remove('rnd1','rnd2','rnd3'); document.body.classList.add('rnd'+n);
     renderTags(n);
     if(scroll!==false){var r=document.getElementById('rounds'); if(r)r.scrollIntoView({block:'start',behavior:'smooth'});}
   };
