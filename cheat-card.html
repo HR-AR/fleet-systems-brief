@@ -213,7 +213,7 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn" onclick="rnd(2)">R2 · Hiring Mgr ✓</button><button class="rn on" onclick="rnd(3)">R3 · HR VP</button><button class="rn" onclick="rnd(4)">R4 · The COO</button><button class="rn" onclick="rnd(5)">R5 · The President</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jul 1b · R1-R5 · public</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jul 2 · R1-R5 · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -550,6 +550,7 @@
   <div class="rpanel" data-r="4">
   <div class="grp"><span>Round 4 · The COO (operational round)</span><span class="ln"></span></div>
   <div class="connect"><b>🤝 Connect:</b> You came up through mechanical engineering and fleet operations and then owned the P&L, so you think in constraints and unit economics, not features. That's my default wiring too. I run delivery operations by grinding on the inputs, cost-per-delivery, the headcount curve, exception rates, and I design the operation so the person is only in the loop when the system truly needs one. We both care about the operation, not the demo.</div>
+  <div class="coachnote"><b>Rapid-fire pattern (any "what would you do if…"):</b> name the objective first, protect the SLA, the unit economics, and safety, in that order. Give the factors, not a gut call. Make the call, and say what you'd hand back or defer. Then name the metric and the root-cause fix so it stops being a nightly fire drill. Tie it to proof: exception-only ops, the headcount curve I broke, CPD grinding, the launch playbook.</div>
 
   <div class="card star" id="c20">
     <div class="qrow"><div class="badge">20</div><div class="q">COO · You get an influx of orders and can only fulfill a few. How do you prioritize? <span class="star-lbl">★ his scenario</span></div></div>
@@ -588,6 +589,95 @@
     </ul></div>
   </div>
 
+  <div class="card star" id="n02">
+    <div class="qrow"><div class="badge">23</div><div class="q">COO · A robot dies mid-route with hot food on board. Your next five minutes?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Telemetry tells me before the customer does. First move is protect the promised time and the food. The temp-controlled compartment buys me minutes, so I recover in place if it's quick, reassign the order to the nearest available unit if it's not, and if neither holds the SLA I fall back to a human courier rather than let it fail at the door. I notify the customer proactively, not after. Then it goes into the reliability Pareto, mean time between failures and interventions per hundred, so the same failure gets engineered out. One dead unit is an incident. The pattern behind it is the real work.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>Telemetry catches it first. Protect the promised time and the food. Recover in place, else reassign to the nearest unit, else a courier fallback. Notify the customer proactively. Then Pareto the failure so it's engineered out.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Telemetry flags it before the customer does. Protect promised time + food first.</li>
+      <li>Recover in place → reassign to nearest unit → human-courier fallback. Notify proactively.</li>
+      <li>Log to the reliability Pareto (MTBF, interventions-per-100) so it's engineered out.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="n04">
+    <div class="qrow"><div class="badge">24</div><div class="q">COO · A unit is stuck, a curb or a crowd, and the operator can't clear it remotely. What happens?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Tiered escalation with a clock on it. The operator gets a short remote-recovery window. If that closes, the orchestration layer reassigns the order to another unit so the customer isn't waiting on a stuck robot, and I dispatch a field tech to retrieve it. The unit fails safe the whole time. Then the trouble spot goes on a map so routing avoids it and engineering fixes it. A stuck unit shouldn't cost me the delivery, and the same corner shouldn't trap me twice.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Tiered escalation on a clock: remote-recovery window → reassign the order → dispatch a field tech.</li>
+      <li>Unit fails safe throughout.</li>
+      <li>Trouble spot goes on a map so routing avoids it and engineering fixes it.</li>
+      <li>Protect the delivery first. Kill the repeat.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="n05">
+    <div class="qrow"><div class="badge">25</div><div class="q">COO · Weather degrades the fleet. How do you run the day?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>I treat it as a shrunk asset, not a crisis. Tighten acceptance to what a degraded fleet can actually deliver on time, shorten the service radius, and pre-position units for the recovery. Weather isn't a surprise, it's a planned scenario, so I'd have acceptance rules keyed to conditions that down-shift the operation automatically instead of me making hero calls at six. Protect the promise, take fewer orders, come back clean when it clears.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Degraded fleet = a shrunk asset: tighten acceptance, shorten radius, pre-position for recovery.</li>
+      <li>Weather is a planned scenario. Acceptance rules keyed to conditions auto-down-shift.</li>
+      <li>Protect the on-time promise over raw volume.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="n06">
+    <div class="qrow"><div class="badge">26</div><div class="q">COO · The hub can't load units fast enough and they're queuing. Where do you look?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>The hub is its own mini-operation, so I run it like one. Find the constraint, instrument it, remove it. Stage orders by dispatch window instead of all at once, parallelize the loading, and sequence launch to demand so units aren't idling in a line. I'd make unit dwell-time a first-class metric, because every minute parked at the hub is a delivery I didn't make. This is the same launch-and-flow work I did standing up Amazon's robot stations.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>The hub is a mini-op: find the constraint, instrument it, remove it.</li>
+      <li>Stage by dispatch window, parallelize loading, sequence launch to demand.</li>
+      <li>Make unit dwell-time a first-class metric.</li>
+      <li>Same launch/flow muscle as the Amazon robot-station 0→1.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="n07">
+    <div class="qrow"><div class="badge">27</div><div class="q">COO · Two aggregators both need your last available unit. Who gets it?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Numbers and contract, not whoever shouts loudest. Tighter SLA risk plus better route economics wins the unit. The other order gets handed back early so that partner can re-route it, instead of me accepting and failing it. I hold every partner to a shared SLA and run it off one scoreboard, no ad-hoc favors. That's exactly the carrier discipline I run today, one standard, everyone sees the same numbers.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Decide by numbers + contract: tighter SLA risk + better route economics wins.</li>
+      <li>Hand the loser back early. Don't accept-and-fail.</li>
+      <li>Shared SLA, one scoreboard, no ad-hoc favors.</li>
+      <li>= the carrier discipline I run today.</li>
+    </ul></div>
+  </div>
+
+  <div class="card star" id="n08">
+    <div class="qrow"><div class="badge">28</div><div class="q">COO · Cost per delivery is above target. What do you cut first?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>I decompose it before I cut anything. Labor is the biggest early lever, so the operator-to-unit ratio comes first. Then deliveries per unit-hour through utilization, batching, and merchant density. Then the failed-and-redelivery rate, because a redo is double cost. Then hardware amortization and uptime. I rank each by dollars per point of improvement and grind the top of that list. Sub-dollar cost per delivery is never one big move, it's a hundred inputs each a little better. That's the exact work I did on the van and gig cost curve.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>Decompose it: operator ratio first (biggest lever), then deliveries per unit-hour, then failed-and-redelivery rate, then amortization and uptime. Rank by dollars per point, grind the top. Sub-dollar is a hundred inputs, not one move.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Decompose CPD: operator ratio (biggest early lever) → deliveries/unit-hour → failure/redelivery → amortization/uptime.</li>
+      <li>Rank by $/point, grind the top.</li>
+      <li>Sub-<span class="num">$1</span> is a hundred inputs, not one move.</li>
+      <li>= my van/gig CPD work.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="n09">
+    <div class="qrow"><div class="badge">29</div><div class="q">COO · A unit clips a parked car. What do you do?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Safety isn't traded against throughput. I pull the unit, preserve the telemetry, and run the incident review before it goes back out, no exceptions. If the pattern shows up fleet-wide, the whole class comes down until we understand the cause. The metric I watch is incidents per ten thousand miles. Trust is the asset that lets this thing scale, and one bad clip we tried to hide would cost more than a day of missed deliveries.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Safety is not throughput. Pull the unit, preserve telemetry, incident review before it returns.</li>
+      <li>Fleet-wide pattern → the class comes down until cause is understood.</li>
+      <li>Metric: incidents per <span class="num">10K</span> miles.</li>
+      <li>Trust is the asset that lets it scale.</li>
+    </ul></div>
+  </div>
+
+  <div class="card star" id="n10">
+    <div class="qrow"><div class="badge">30</div><div class="q">COO · Time to open the second site. How do you pick it and launch it?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Same playbook, faster. Pick the service area for merchant density and route-ability, not just a pin on a map. Stand up the integrations, launch supervised at one operator per unit, grind the Pareto of what breaks, document the runbook, and hand it off. Site two should be cheaper and faster than site one, because the whole point of the first site was to turn what we learned into a repeatable launch. That's the Amazon move, my robot-station playbook cut ramp defects seventeen percent and became the standard the network launched on.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>Same playbook, faster. Pick for merchant density and route-ability, stand up integrations, launch supervised at one operator per unit, grind the Pareto, document the runbook, hand off. Site two beats site one. That's the Amazon 0→1 move.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Same playbook, faster. Pick for merchant density + route-ability.</li>
+      <li>Launch supervised at <span class="num">1:1</span>, grind the Pareto, document the runbook, hand off.</li>
+      <li>Site 2 cheaper/faster than site 1 = the repeatable-launch thesis.</li>
+      <li>= Amazon 0→1 (<span class="num">−17%</span> ramp defects, became the standard).</li>
+    </ul></div>
+  </div>
+
   </div><!-- /r4 -->
 
   <div class="rpanel" data-r="5">
@@ -595,7 +685,7 @@
   <div class="connect"><b>🤝 Connect:</b> You scaled a robotics product from a pilot to tens of thousands of units in the field, and you've said the challenge is never the technology, it's operationalizing it into consistent, measurable outcomes. That's the exact muscle I've been building. I took last-mile capabilities from a working demo to live operations at scale, and I obsess over the scaffolding that turns a robot into a business: the orchestration, the integrations, the per-unit economics. We also read automation the same way. Robots take the boring, low-margin miles so people do the higher-value work, not lose their seat.</div>
 
   <div class="card" id="c23">
-    <div class="qrow"><div class="badge">23</div><div class="q">President · What's the path to unit economics that actually work?</div></div>
+    <div class="qrow"><div class="badge">31</div><div class="q">President · What's the path to unit economics that actually work?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>It's not one big move, it's grinding two levers until both bend. Push the numerator, deliveries per robot per day, through utilization and merchant density so a robot is never sitting idle. And crush the cost side, where the biggest variable is human intervention. Every teleop takeover is a person I'm paying, so every point of autonomy and every gain in <b>robots per operator</b> drops the cost, plus tight repair-and-swap loops so uptime stays high. You said it best. The challenge is never the technology, it's <b>operationalizing it into consistent, measurable outcomes</b>. Sub-dollar isn't a hardware breakthrough, it's a hundred operational inputs each grinded a little better. That's exactly the cost-per-delivery work I did on the van and gig side, new form factor.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>Two levers, grinded. Push deliveries per robot per day with utilization and merchant density, and crush cost by raising autonomy and robots-per-operator with tight repair-swap uptime. Sub-dollar is a hundred inputs, not one move. That's my CPD work.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -608,7 +698,7 @@
     </ul></div>
   </div>
   <div class="card" id="c24">
-    <div class="qrow"><div class="badge">24</div><div class="q">President · How do you go from one working pilot to thousands of units running profitably?</div></div>
+    <div class="qrow"><div class="badge">32</div><div class="q">President · How do you go from one working pilot to thousands of units running profitably?</div></div>
     <div class="open"><span class="l">TALK TRACK</span>A pilot proves the robot works. It doesn't prove the business works. So I'd separate the two. Stabilize the first market until the scoreboard is boring, cost per delivery, on-time, uptime all holding, then write down exactly what made it hold and turn that into a repeatable launch playbook. That's the Amazon move for me. I built the launch program for the robot delivery stations off the real failures, and it became the standard the rest of the network ran on. From there each new site is the same playbook, not a fresh invention, and the moat isn't the robot. It's the orchestration layer stitching demand to the fleet and the per-site economics that come with it. The hot metros are getting crowded, which is a good sign, so the game is density: own the routes and the merchants in a metro, don't spread thin. And I'd build a stabilized site to hand off, then go stand up the next one.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>A pilot proves the robot, not the business. Stabilize market one until the scoreboard's boring, turn what held into a repeatable launch playbook, then each new site is the same playbook. The moat is the orchestration layer, and the game is route density.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -621,7 +711,7 @@
     </ul></div>
   </div>
   <div class="card star" id="c25">
-    <div class="qrow"><div class="badge">25</div><div class="q">President · Where's this in 3 to 5 years, and why are you the person to build it? <span class="star-lbl">★ closing</span></div></div>
+    <div class="qrow"><div class="badge">33</div><div class="q">President · Where's this in 3 to 5 years, and why are you the person to build it? <span class="star-lbl">★ closing</span></div></div>
     <div class="open"><span class="l">TALK TRACK</span>In three to five years the story stops being about robots. It becomes about a neighborhood where a hot meal shows up on time, for around a dollar, without a driver circling for parking, and nobody thinks twice about it. The cost curve gets there. It's roughly a dollar to seven a delivery today, and the whole industry is compressing toward a dollar against eight to ten for a human courier. That gap is the business. And the people angle is the part I hold onto. The robots take the low-margin task-miles so humans do the work worth doing. Task-solvers, not job-takers. On why me, it's simple. My whole career is one sentence, and it's yours. The challenge was never the technology, it was <b>operationalizing it into consistent, measurable outcomes at scale</b>. I did it in rail, I did it launching robot delivery at Amazon, I did it building a van platform to <b>~1,800 vans</b> and running it off the cost curve. I don't reinvent the robot. I own the seam that turns it into a business, and I build the playbook so it repeats. That's the job, and it's the one I've been training for the whole time.</div>
     <div class="shortv"><span class="l">SHORT ~20s</span>In 3-5 years it stops being about robots and becomes a neighborhood getting a hot meal on time for about a dollar, robots taking the low-margin miles so people do the work worth doing. Why me: my whole career is operationalizing new tech into measurable outcomes at scale. That's the job.</div>
     <div class="hl"><span class="l">HIT THESE</span><ul>
@@ -631,6 +721,63 @@
       <li>Why me = your line: the challenge was never the tech, it's <b>operationalizing it into measurable outcomes at scale</b>.</li>
       <li>Proof across three acts: rail solo, robot-delivery 0→1 at Amazon, van platform to <span class="num">~1,800</span> run off the cost curve.</li>
       <li>I own the <b>seam</b> that turns the robot into a business and build the <b>playbook so it repeats</b>, then move to the next site.</li>
+    </ul></div>
+  </div>
+
+  <div class="card star" id="c26">
+    <div class="qrow"><div class="badge">34</div><div class="q">President · Why you, over a robotics engineer or a big-company ops hire?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Because I own the seam, not the robot. A robotics engineer makes the unit work. A big-ops hire runs a mature machine. The thing that turns a working robot into a business that earns is the layer in between, the orchestration, the platform, the per-unit economics, the launch playbook. That's the piece I'd own and build. It's my technical baby, and it's exactly what I've done my whole career. I don't need to reinvent the robot. I need to make it hit its numbers at scale, then make that repeat.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>I own the <b>seam</b> (orchestration + platform + economics + playbook), not the robot itself.</li>
+      <li>Engineer makes the unit work; big-ops runs the mature machine; the seam is the gap I fill.</li>
+      <li>Build it, run it off the scoreboard, hand it off so it repeats.</li>
+      <li>= my whole career.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="c27">
+    <div class="qrow"><div class="badge">35</div><div class="q">President · Explain what we're building to someone who doesn't care about robots.</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>A hot meal shows up at your door on time, for about a dollar, and no driver circled your block for ten minutes to bring it. That's it. The robot is just how we get the cost down. Behind the scenes, the machines take the low-margin miles so people do the work that actually needs a person. Task-solvers, not job-takers. If I've done my job right, in a few years nobody thinks about the robot at all. They just notice their food is cheaper and on time.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>A hot meal, on time, about a dollar, no driver circling the block. The robot is just the cost lever. Machines take the low-margin miles so people do the work worth doing. Done right, nobody thinks about the robot.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Human terms: hot meal, on time, ~<span class="num">$1</span>, no driver circling.</li>
+      <li>The robot is just the cost lever.</li>
+      <li>Machines take the low-margin miles; people do the work worth doing. Task-solvers, not job-takers.</li>
+      <li>Success = nobody thinks about the robot.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="c28">
+    <div class="qrow"><div class="badge">36</div><div class="q">President · How do you automate without alienating the people?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>Make the job better before you make it smaller, and be honest about it the whole way. When I put AI on my fleet at Walmart, I killed the 2am screen-watching my team hated and moved them to the judgment and exception work. Monitoring dropped seventy-five percent and nobody lost a seat. Same idea here. The operators become fleet supervisors, running the calls a robot can't make. If the people running it don't come out ahead, the automation doesn't stick. Augment, don't replace.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Make the job better before smaller. Be transparent.</li>
+      <li>Walmart AI rollout: <span class="num">−75%</span> monitoring, no seats lost, people moved to judgment work.</li>
+      <li>Operators become fleet supervisors on exception/judgment work.</li>
+      <li>People win or it doesn't stick. Augment, don't replace.</li>
+    </ul></div>
+  </div>
+
+  <div class="card" id="c29">
+    <div class="qrow"><div class="badge">37</div><div class="q">President · The aggregators, are they a moat or a dependency? What's the long game?</div></div>
+    <div class="open"><span class="l">TALK TRACK</span>They're the demand, and demand is where the orders already live, so I integrate them on day one instead of building a marketplace nobody asked for. But the moat isn't the demand, it's the operating layer underneath, the orchestration, the data, and the per-metro route and merchant density I build. So the long game is partner for demand now, own the operating layer forever. Integration beats adoption. The company that operates the fleet best, and owns the density in a metro, wins even if it never owns the app the customer taps.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Aggregators = demand. Integrate them day one, don't rebuild a marketplace.</li>
+      <li>Moat = the operating layer (orchestration + data + per-metro density), not the demand.</li>
+      <li>Long game: partner for demand now, own the operating layer forever.</li>
+      <li>Integration beats adoption.</li>
+    </ul></div>
+  </div>
+
+  <div class="card star" id="b90">
+    <div class="qrow"><div class="badge">90</div><div class="q">President · Walk me through your first 30, 60, 90. <span class="star-lbl">★ closing plan</span></div></div>
+    <div class="open"><span class="l">TALK TRACK</span>First thirty, I learn the operation and the scoreboard cold, in the hub and on the units. Deliveries per unit per day, cost per delivery, intervention rate, on-time, uptime, and the operator-to-unit ratio. I map the whole path, aggregator order to doorstep to return, and meet the leads, the operators, and the partners. I find the one metric throttling growth. First sixty, I stand up the orchestration and insights layer so ops can see what's breaking in real time, ship exception-only alerting so operators stop babysitting screens, and draft the launch playbook and the readiness gate for widening the operator ratio. First ninety, I prove the economics move, a measurable cost-per-delivery and on-time gain, and run one launch against the playbook so the next site beats the first. By ninety the platform is the thing that lets the network scale without scaling headcount.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>Thirty: learn the operation and the scoreboard cold, find the metric throttling growth. Sixty: stand up the orchestration and exception layer, draft the launch playbook. Ninety: prove CPD and on-time move, run one repeatable launch. The platform becomes what scales the network without scaling headcount.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li><b>First 30 — learn the operation + scoreboard:</b> deliveries/unit/day, CPD, intervention rate, on-time, uptime, operator ratio. Map order → doorstep → return. Meet leads, operators, partners. Find the metric throttling growth.</li>
+      <li><b>First 60 — stand up the platform v1:</b> the orchestration + insights layer, exception-only alerting, the launch playbook, and the operator-ratio readiness gate. Pick the first CPD lever.</li>
+      <li><b>First 90 — prove it moves:</b> a measurable CPD + on-time gain, one launch against the playbook so site N beats site 1, plus the autonomy-readiness + hiring plan on the table.</li>
+      <li>North star: the platform is what scales the network <b>without</b> scaling headcount.</li>
     </ul></div>
   </div>
 
@@ -686,7 +833,7 @@
 </div>
 
 <script>
-  var K='interview-cheat-card-v10';
+  var K='interview-cheat-card-v11';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
@@ -696,8 +843,8 @@
     var sets={1:[['rounds','Recruiter recap']],
       2:[['c13','KPIs'],['c14','Scale ★'],['c15','CPD'],['c16','Technical']],
       3:[['c17','People'],['c18','Weakness'],['c19','Comp'],['cD1','Why us'],['cD2','Relo']],
-      4:[['c20','Triage ★'],['c21','Headcount'],['c22','Build/partner']],
-      5:[['c23','Unit econ'],['c24','Market'],['c25','Vision ★']]};
+      4:[['c20','Triage ★'],['n02','Unit down'],['c21','Op ratio'],['n04','Stuck'],['n05','Weather'],['n06','Hub jam'],['n07','Partner tie'],['c22','Build/buy'],['n08','CPD cut'],['n09','Safety'],['n10','Site 2']],
+      5:[['c23','Unit econ'],['c24','Scale'],['c25','Vision ★'],['c26','Why you'],['c27','Plain-English'],['c28','Augment'],['c29','Aggregators'],['b90','30/60/90']]};
     el.innerHTML=(sets[n]||[]).map(function(x){return '<button class="tg tgr" onclick="jump(\''+x[0]+'\')">'+x[1]+'</button>';}).join('');};
   // Round tabs (R1 recap / R2 hiring mgr / R3 HR VP / R4 COO / R5 President). Pills live in the bar; panels in .wrap.
   window.rnd=function(n,scroll){
