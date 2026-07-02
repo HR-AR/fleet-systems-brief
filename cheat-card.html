@@ -213,7 +213,7 @@
   <div class="rnav"><button class="rn" onclick="rnd(1)">R1 · Recruiter ✓</button><button class="rn" onclick="rnd(2)">R2 · Hiring Mgr ✓</button><button class="rn on" onclick="rnd(3)">R3 · HR VP</button><button class="rn" onclick="rnd(4)">R4 · The COO</button><button class="rn" onclick="rnd(5)">R5 · The President</button></div>
   <span id="readinghint">● Reading mode — tap LIVE MODE to exit</span>
   <span id="st" class="o">editable · auto-saves</span>
-  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jul 2b · R1-R5 · LI-checked · public</span>
+  <span class="ver o" style="margin-left:8px;font-size:10px;color:#7f93bb;letter-spacing:.3px">build Jul 2c · R1-R5 · LI-checked · public</span>
   <span class="sp"></span>
   <button class="g o" onclick="location.href='./'">Research &amp; links →</button>
   <button class="g o" onclick="exp()">Export edits</button>
@@ -685,6 +685,30 @@
     </ul></div>
   </div>
 
+  <div class="card star" id="n11">
+    <div class="qrow"><div class="badge">38</div><div class="q">COO · What if regulation caps your operator ratio? <span class="star-lbl">★ shows you see around the corner</span></div></div>
+    <div class="open"><span class="l">TALK TRACK</span>That's a first-two-weeks check for me, not a surprise I'd let happen at month six. Some jurisdictions legally require an operator to take control at every street crossing. If the launch metro has a rule like that, the operator ratio is capped by regulation, not by autonomy, and the whole unit-economics plan changes. So before I commit to any ratio target, I get the ordinance answer, yes or no, with the citation. If it's capped, the levers shift. Route design that minimizes crossings, batching and density to raise deliveries per operator-hour, and a permitting plan to move the rule over time. Same discipline on the rest of the license to operate. Food-safety compliance for unattended hot food, the insurance line, and a safety case with real contents. A readiness gate is a document with a defined operating domain and thresholds, not a label. None of that is glamorous. All of it decides whether the network is allowed to exist.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>First-two-weeks check. If the metro mandates operator control at crossings, the ratio is regulation-capped, not autonomy-capped, and I'd know before committing a target. Same for food-safety, insurance, and a safety case with real contents. The license to operate decides if the network exists.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Permit regime = <b>first-two-weeks check</b> with the ordinance citation, yes or no.</li>
+      <li>If capped: the ratio is a <b>regulatory</b> problem. Levers shift to route design, batching, density, and permitting.</li>
+      <li>License to operate = permits + food-safety (unattended hot food) + insurance + a <b>safety case with contents</b> (operating domain, thresholds, sign-off).</li>
+      <li>Never commit an economics target before the regulatory floor is known.</li>
+    </ul></div>
+  </div>
+
+  <div class="card star" id="n12">
+    <div class="qrow"><div class="badge">39</div><div class="q">COO · Much of this operation is outsourced. How do you run operators who don't work for you? <span class="star-lbl">★ the org reality</span></div></div>
+    <div class="open"><span class="l">TALK TRACK</span>This is my day job. My fleet runs on carrier partners whose people don't report to me, and it holds a ninety-nine percent on-time rate across ten of them. The mechanism is three things. One, a shared SLA written into the contract, with the metrics that matter. Intervention rate, uptime, on-time, response time. Two, teeth. Performance credits and penalties tied to those numbers, so the vendor's incentive is my unit economics, not just their volume. Three, one shared dashboard both sides see, so there's never a second version of the truth to argue about. Then I run the relationship off the scoreboard, not off escalation emails. A vendor you manage by exception with clear numbers performs better than an employee you manage by wandering around. I'd run the teleop and field vendors here exactly the same way.</div>
+    <div class="shortv"><span class="l">SHORT ~20s</span>My day job. Ten carrier partners, none report to me, 99% on-time. Shared SLA in the contract, penalties tied to intervention rate and uptime, and one shared dashboard so there's no second version of the truth. Run the relationship off the scoreboard.</div>
+    <div class="hl"><span class="l">HIT THESE</span><ul>
+      <li>Proof up front: <span class="num">99%</span> on-time across <span class="num">10</span> carrier partners who don't report to me.</li>
+      <li>Mechanism: <b>shared SLA</b> in the contract → <b>penalties/credits</b> tied to intervention rate, uptime, on-time → <b>one shared dashboard</b>.</li>
+      <li>Vendor incentive gets tied to MY unit economics, not their volume.</li>
+      <li>Manage by scoreboard and exception, not escalation emails.</li>
+    </ul></div>
+  </div>
+
   </div><!-- /r4 -->
 
   <div class="rpanel" data-r="5">
@@ -840,7 +864,7 @@
 </div>
 
 <script>
-  var K='interview-cheat-card-v12';
+  var K='interview-cheat-card-v13';
   var W=document.querySelector('.wrap'), S=document.getElementById('st');
   W.setAttribute('contenteditable','true'); W.setAttribute('spellcheck','false');
   try{var s=localStorage.getItem(K); if(s){W.innerHTML=s; S.textContent='your edits restored';}}catch(e){}
@@ -850,7 +874,7 @@
     var sets={1:[['rounds','Recruiter recap']],
       2:[['c13','KPIs'],['c14','Scale ★'],['c15','CPD'],['c16','Technical']],
       3:[['c17','People'],['c18','Weakness'],['c19','Comp'],['cD1','Why us'],['cD2','Relo']],
-      4:[['c20','Triage ★'],['n02','Unit down'],['c21','Op ratio'],['n04','Stuck'],['n05','Weather'],['n06','Hub jam'],['n07','Partner tie'],['c22','Build/buy'],['n08','CPD cut'],['n09','Safety'],['n10','Site 2']],
+      4:[['c20','Triage ★'],['n02','Unit down'],['c21','Op ratio'],['n04','Stuck'],['n05','Weather'],['n06','Hub jam'],['n07','Partner tie'],['c22','Build/buy'],['n08','CPD cut'],['n09','Safety'],['n10','Site 2'],['n11','Reg cap ★'],['n12','Vendors ★']],
       5:[['c23','Unit econ'],['c24','Scale'],['c25','Vision ★'],['c26','Why you'],['c27','Plain-English'],['c28','Augment'],['c29','Aggregators'],['b90','30/60/90']]};
     el.innerHTML=(sets[n]||[]).map(function(x){return '<button class="tg tgr" onclick="jump(\''+x[0]+'\')">'+x[1]+'</button>';}).join('');};
   // Round tabs (R1 recap / R2 hiring mgr / R3 HR VP / R4 COO / R5 President). Pills live in the bar; panels in .wrap.
